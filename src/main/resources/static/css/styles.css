@@ -1,0 +1,335 @@
+@import
+	url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap')
+	;
+
+* {
+	margin: 0;
+	/*font-family: 'Source Sans Pro';*/
+}
+
+body {
+	background-color: #e7e7e7;
+}
+
+/***********************************************************
+*******	 HOME STYLE  */
+.forma-de-pago__titulo {
+	font-size: 1.2em;
+}
+
+.forma-de-pago__sub-titulo {
+	font-size: 0.9em;
+}
+
+.categoria__titulo {
+	font-size: 1.5em;
+}
+
+.categoria__sub-titulo {
+	font-size: 1.2em;
+}
+
+/* Para sacarle los efectos a ciertos links y cards tittle */
+.card-title, .card-text {
+	color: #212529;
+	text-decoration: none;
+}
+
+
+/***********************************************************
+*******	 Pagina ULTIMOPRODUCTO  */
+.box__table {
+	background-color: #fff;
+	border-radius: 10px;
+}
+
+/***********************************************************
+*******	 Pagina COMPRA  */
+.compra__titulo {
+	font-size: 2em;
+}
+
+
+/* Home */
+
+.btn-1 {
+    background-color: #ffffff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    color: #5e2ced;
+    font-size: 16px;
+    text-transform: capitalize;
+    transition: all 0.5s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+.btn-1:focus {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-1:hover {
+    color: #ffffff;
+    background-color: #5e2ced;
+}
+
+.btn-2 {
+    background-color: #5e2ced;
+    padding: 11px 26px;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: capitalize;
+    transition: all 0.5s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+.btn-2:focus {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-2:hover {
+    color: #5e2ced;
+    background-color: #ffffff;
+}
+
+.home {
+    min-height: 100vh;
+    padding: 150px;
+    background-color: #5e2ced;
+}
+
+.home-text {
+    padding-top: 30px;
+}
+
+.home-text h1 {
+    font-size: 45px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 20px;
+}
+
+.home-text p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 300;
+}
+
+.home .home-btn {
+    margin-top: 40px;
+}
+
+.home-img img {
+    max-width: 480px;
+    width: 100%;
+}
+
+.home-img {
+    position: relative;
+}
+
+.home .home-img img {
+    animation: animated 4s linear infinite;
+}
+
+@keyframes animated {
+    0%,
+    100% {
+        transform: translateY(8px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.home-img .circle {
+    position: absolute;
+    z-index: 1;
+    height: 440px;
+    width: 440px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    top: 2%;
+    left: 0%;
+    transform: transalte(-50%, -50%);
+}
+
+.home-img .circle::before {
+    content: '';
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    left: 30px;
+    top: 38px;
+    transform-origin: 182px 179px;
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Productos */
+
+.productos {
+    padding: 30px 0 40px;
+}
+
+.card__container {
+    margin-bottom: 30px;
+}
+
+.box__card {
+    transition: box-shadow .3s;
+}
+
+.box__card:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .5);
+}
+
+#non-effecteed-link,
+#non-effecteed-link:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+/* BEM para tablas */
+/* Put to table tag this name class */
+.content_table {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	min-width: 400px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content_table thead tr {
+	background-color: #009879;
+	color: #ffffff;
+	text-align: left;
+	font-weight: bold;
+}
+
+.content_table th, .content-table td {
+	padding: 12px 15px;
+}
+
+.content_table tbody tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+.content_table tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.content_table tbody tr:last-of-type {
+	border-bottom: 2px solid #009879;
+}
+
+.content_table tbody tr.active-row {
+	font-weight: bold;
+	color: #009879;
+}
+
+/* BEM para formularios */
+form, form * {
+	box-sizing: border-box;
+	font-family: 'Source Sans Pro'; 
+}
+
+.formulario {
+	width: 900px;
+	max-width: 900px;
+	margin: 0;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.form_container {
+	padding: 30px;
+	
+}
+
+.form_content {
+	padding: 40px;
+	
+}
+
+.form_header {
+	font-size: 25px;
+	margin-bottom: 15px;
+	text-align: center;
+	color: #333333;
+}
+
+label {
+	width: 27%;
+	display: inline-block;
+}
+
+input {
+	width: 70%;
+	margin-bottom: 5px;
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px solid #dddddd;
+	background: #ffffff;
+	outline: none;
+	transition: border-color 0.5s;
+}
+
+input:focus {
+	border-color: #009578;
+}
+
+input::placeholder {
+	color: #aaaaaa;
+}
+
+.form_button {
+	color: #ffffff;
+	font-weight: bold;
+	background: #009578;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding-top: 7px;
+	padding-bottom: 6px;
+}
+
+.form_button:hover {
+	background: #008067;
+}
+
+
+.form_links {
+	margin-top: 15px;
+	text-align: center;
+}
+
+.form_link {
+	font-size: 0.9em;
+	color: #008067;
+	text-decoration: none;
+}
+
+/* Para la próxima */
+.page-link{
+	z-index: 1;
+}

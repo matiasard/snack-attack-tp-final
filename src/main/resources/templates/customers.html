@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customers</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet"
+	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}"></link>
+</head>
+<body>
+	<div th:replace="layout/header :: header"></div>
+	<!-- style="text-align: justify;" -->
+	<div class="container-fluid">
+		<div class="col-xs-12" style="height: 30px;"></div>
+		<h2>CUSTOMERS</h2>
+		<a class="btn btn-success" id="delRef">Add <i class="fa fa-plus"></i>
+		</a>
+		<div class="row">
+			<div class="col-12">
+				<table class="table table-hover content_table">
+					<thead>
+						<tr class="text-center">
+							<th style="width: 6%">Number</th>
+							<th>Name</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Phone</th>
+							<th>Address</th>
+							<th>Postal Code</th>
+							<th style="width: 9%">Edit</th>
+							<th style="width: 10%">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="customer : ${customers}">
+							<td th:text="${customer.number}"></td>
+							<td th:text="${customer.name}"></td>
+							<td th:text="${customer.contactFirstName}"></td>
+							<td th:text="${customer.contactLastName}"></td>
+							<td th:text="${customer.phone}"></td>
+							<td th:text="${customer.addressLine1}"></td>
+							<td th:text="${customer.postalCode}"></td>
+							<td><a
+								
+								class="btn btn-warning">Edit <i class="fa fa-edit"></i></a></td>
+							<td><a data-toggle="modal"
+								data-target="#removeProductoModal" class="btn btn-danger delBtn"
+								th:attr="data-target='#removeProductoModal'+${customer.number}">Delete
+									<i class="fa fa-trash"></i>
+							</a> <!-- #Modal for removing Producto -->
+								<div class="modal fade"
+									th:id="removeProductoModal+${customer.number}"
+									id="removeProductoModal" tabindex="-1" role="dialog"
+									aria-labelledby="removeModalCenterTitle" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title" id="removeModalCenterTitle">Delete Customer</h4>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<p class="alert alert-danger">
+													Are you sure want to delete <span
+														th:text="${customer.name}"></span>?
+												</p>
+											</div>
+											<div class="modal-footer">
+												<a 
+													class="btn btn-danger" id="delRef">Accept</a>
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Cancel</button>
+											</div>
+										</div>
+									</div>
+								</div></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- Pagination -->
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<nav aria-label="Pagination">
+							<ul class="pagination justify-content-center">
+								<li class="page-item"
+									th:classappend="${prev == 0 ? 'disabled': ''}"><a
+									class="page-link" th:href="@{|/customers/?page=${prev}|}">Previous</a></li>
+								<li class="page-item" th:each="page : ${pages}"
+									th:classappend="${current == page ? 'active': ''}"><a
+									class="page-link" th:href="@{|/customers/?page=${page}|}"
+									th:text="${page}"></a></li>
+								<li class="page-item"
+									th:classappend="${current == last ? 'disabled': ''}"><a
+									class="page-link" th:href="@{|/customerss/?page=${next}|}">Next</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="layout/footer :: footer"></div>
+	</script>
+</body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</html>

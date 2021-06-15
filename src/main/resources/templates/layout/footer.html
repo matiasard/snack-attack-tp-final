@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<footer class="new_footer_area bg_color" th:fragment="aboutfooter">
+		<div class="new_footer_top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 mt-3">
+						<div class="f_widget company_widget wow fadeInLeft"
+							data-wow-delay="0.2s"
+							style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+							<h3 class="f-title f_600 t_color f_size_18">Contactar</h3>
+							<p>¿Necesitas ayuda?</p>
+							<form action="#" class="f_subscribe_two mailchimp" method=""
+								novalidate="true" _lpchecked="1">
+								<!-- Faltan un par de validators-->
+								<input type="email" name="EMAIL" class="form-control memail"
+									placeholder="Correo electronico" th:required="true">
+								<button class="btn btn_get btn_get_two" type="submit">Enviar</button>
+								<p class="mchimp-errmessage" style="display: none;"></p>
+								<p class="mchimp-sucmessage" style="display: none;"></p>
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 mt-3">
+						<div class="f_widget about-widget pl_70 wow fadeInLeft"
+							data-wow-delay="0.4s"
+							style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+							<h3 class="f-title f_600 t_color f_size_18">Descargas</h3>
+							<ul class="list-unstyled f_list">
+								<li><a href="#">Lista de precios</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 mt-3">
+						<div class="f_widget about-widget pl_70 wow fadeInLeft"
+							data-wow-delay="0.6s"
+							style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+							<h3 class="f-title f_600 t_color f_size_18">Ayuda</h3>
+							<ul class="list-unstyled f_list">
+								<li><a href="#">Terminos y condiciones</a></li>
+								<li><a href="#">Reportar</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 mt-3">
+						<div class="f_widget social-widget pl_70 wow fadeInLeft"
+							data-wow-delay="0.8s"
+							style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+							<h3 class="f-title f_600 t_color f_size_18">Redes Sociales</h3>
+							<div class="f_social_icon">
+								<a href="https://www.facebook.com/" target="_blank"
+									class="fa fa-facebook"></a> <a href="https://twitter.com/"
+									target="_blank" class="fa fa-twitter"></a> <a
+									href="https://ar.linkedin.com/" target="_blank"
+									class="fa fa-linkedin"></a> <a href="https://github.com/"
+									target="_blank" class="fa fa-github"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_bg">
+				<div class="footer_bg_one"></div>
+				<div class="footer_bg_two"></div>
+			</div>
+		</div>
+		<div class="footer_bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-7">
+						<p class="mb-0 f_400">&copy; Programación Visual, Snack Attack, Todos los derechos
+							reservados.</p>
+					</div>
+					<div class="col-lg-6 col-sm-5 text-right">
+						<p class="mb-0 f_400">
+							Powered by <i class="icon_heart"> </i><a
+								href="https://github.com/enzosandoval/snack-attack-tp-final" target="_blank">GitHub.</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cookie-container justify-content-center">
+			<p class="text-center">
+				Al navegar en este sitio aceptás las cookies que utilizamos para
+				mejorar tu experiencia. <a class="cookie__link" href="#"
+					target="_blank">Más información. </a>
+				<button class="cookie-btn">
+					<span aria-hidden="true"> Entendido</span>
+				</button>
+			</p>
+		</div>
+		<script type="text/javascript">
+	const cookieContainer = document.querySelector(".cookie-container");
+	const cookieButton = document.querySelector(".cookie-btn");
+
+	cookieButton.addEventListener("click", () => {
+ 	cookieContainer.classList.remove("active");
+ 	localStorage.setItem("cookieBannerDisplayed", "true");
+	});
+
+	setTimeout(() => {
+  	if (!localStorage.getItem("cookieBannerDisplayed")) {
+    cookieContainer.classList.add("active");
+  	}
+}, 2000);</script>
+	</footer>
+</body>
+</html>
