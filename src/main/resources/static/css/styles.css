@@ -101,7 +101,7 @@ body {
     width: 100vw;;
     padding: 150px;
     background-color: #5e2ced;
-    background-image: url(https://demo.cmssuperheroes.com/themeforest/autosmart/wp-content/uploads/2017/05/bg-filter.jpg);
+    background-image: url(../img/bannerPrincipal/bg-auto.jpg);
     background-position: 25% 40%;
 }
 .home::after{
