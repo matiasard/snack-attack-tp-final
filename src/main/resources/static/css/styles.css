@@ -98,12 +98,25 @@ body {
 
 .home {
     min-height: 100vh;
+    width: 100vw;;
     padding: 150px;
     background-color: #5e2ced;
+    background-image: url(https://demo.cmssuperheroes.com/themeforest/autosmart/wp-content/uploads/2017/05/bg-filter.jpg);
+    background-position: 25% 40%;
+}
+.home::after{
+        content:'';
+        position: absolute;
+            top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.6);
 }
 
 .home-text {
     padding-top: 30px;
+    z-index: 1;
 }
 
 .home-text h1 {
