@@ -70,7 +70,8 @@ public class ProductoController {
 		model.addAttribute("offices", officeService.obtenterOficinas());
 		model.addAttribute("orders", orderService.obtenerOrdenes());
 		model.addAttribute("payments", paymentService.obtenerPagos());
-		return "home";
+		return "index";
+		// return "home";
 	}
 
 //	@GetMapping("/producto")
