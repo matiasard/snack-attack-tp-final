@@ -329,7 +329,32 @@ input::placeholder {
 	text-decoration: none;
 }
 
-/* Para la próxima */
+/* Para la prï¿½xima */
 .page-link{
 	z-index: 1;
+}
+
+/***********************************************************
+*******	 Pagina Customers  */
+.btn_success-2{
+    background-color: #0fbb3af6;
+    color: #fff;
+}
+.btn__success-2:hover{
+    background-color: #0daa34f6;
+    color: #fff;
+}
+
+.page-title-box{
+    background: url(https://themesdesign.in/morvin/layouts/assets/images/title-img.png);
+    background-position: center;
+    background-color: #525ce5;
+    margin: 0 -24px 23px -24px;
+    padding: 84px 24px 92px 24px;
+    color: #fff;
+    background-size: cover;
+}
+
+.page-content__wrapper{
+    margin-top: -90px;
 }
