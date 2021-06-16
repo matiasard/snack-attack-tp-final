@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign Up</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/forms.css}">
+</head>
+<body>
+	<div th:replace="layout/header :: header"></div>
+	<div>
+		<section class="my-form">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="card-wrapper col-md-6 col-sm-8">
+						<div class="card fat">
+							<div class="card-body">
+								<h4 class="card-title">Fill in your details</h4>
+								<form method="#" novalidate="">
+									<div class="form-group">
+										<label for="name">Name</label>
+										<input id="name" type="text" class="form-control" name="name"
+											required autofocus>
+									</div>
+									<div class="form-group">
+										<label for="apellido">Last Name</label>
+										<input id="apellido" type="text" class="form-control"
+											name="apellido" required autofocus>
+									</div>
+									<div class="form-group">
+										<label for="dni">DNI</label>
+										<input id="dni" type="number" class="form-control" name="dni"
+											required autofocus>
+									</div>
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input id="email" type="email" class="form-control"
+											name="email" required>
+									</div>
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input id="password" type="password" class="form-control"
+											name="password" required data-eye>
+									</div>
+									<div class="form-group">
+										<div class="custom-checkbox custom-control">
+											<input type="checkbox" name="agree" id="agree"
+												class="custom-control-input" required=""
+												style="margin-right: 10px;">
+											<label for="agree" class="custom-control-label"
+												style="display: inline">
+												I accept <a href="#">terms and conditions. </a>
+											</label>
+										</div>
+									</div>
+									<div class="form-group m-0">
+										<button type="submit" class="btn confirm-button">Sign Up</button>
+									</div>
+									<div class="mt-4 text-center">
+										Do you have an account?<a th:href="@{/signin}">Sign In</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</html>
