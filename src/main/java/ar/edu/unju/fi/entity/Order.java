@@ -21,8 +21,6 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
-import lombok.EqualsAndHashCode;
-
 /**
  * @author Enzo Sandoval
  *
@@ -30,7 +28,6 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Component
 @Table(name = "orders")
-@EqualsAndHashCode(of = "number")
 public class Order {
 
 	@Id

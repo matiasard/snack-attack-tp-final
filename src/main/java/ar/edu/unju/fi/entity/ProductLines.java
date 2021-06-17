@@ -3,14 +3,18 @@
  */
 package ar.edu.unju.fi.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
@@ -27,20 +31,23 @@ public class ProductLines {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Length(max = 50)
-	@Column(unique = true, nullable = false, updatable = false)
+	@Column(name = "productLine")
 	private String productLine;
 
-	@NotBlank
+	@NotEmpty
 	@Length(max = 4000)
-	@Column(nullable = false, length = 4000)
+	@Column
 	private String textDescription;
 
 	@Column
 	private String htmlDescription;
 
 	@Lob
-	@Column(name = "image", columnDefinition = "MEDIUMBLOB")
+	@Column(name = "image", columnDefinition = "LONGBLOB")
 	private String image;
+
+	@OneToMany(mappedBy = "productLine")
+	private List<Product> productos = new ArrayList<Product>();
 
 	public ProductLines() {
 	}
@@ -50,6 +57,13 @@ public class ProductLines {
 	 */
 	public String getProductLine() {
 		return productLine;
+	}
+
+	/**
+	 * @param productLine the productLine to set
+	 */
+	public void setProductLine(String productLine) {
+		this.productLine = productLine;
 	}
 
 	/**
@@ -94,10 +108,24 @@ public class ProductLines {
 		this.image = image;
 	}
 
+	/**
+	 * @return the productos
+	 */
+	public List<Product> getProductos() {
+		return productos;
+	}
+
+	/**
+	 * @param productos the productos to set
+	 */
+	public void setProductos(List<Product> productos) {
+		this.productos = productos;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductLines [productLine=" + productLine + ", textDescription=" + textDescription
-				+ ", htmlDescription=" + htmlDescription + ", image=" + image + "]";
+				+ ", htmlDescription=" + htmlDescription + ", image=" + image + ", productos=" + productos + "]";
 	}
 
 }

@@ -1,0 +1,109 @@
+/* Form */
+.my-form {
+	background-color: #5e2ced;
+	min-height: 100vh;
+	padding: 150px 0;
+}
+
+.my-form .card-wrapper {
+	width: 400px;
+}
+
+.my-form .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
+}
+
+.my-form .fat {
+	padding: 20px;
+	position: relative;
+	transition: .3s;
+	box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.8);
+	margin-bottom: 40px;
+}
+
+.my-form .card .card-title {
+	margin-bottom: 30px;
+}
+
+.my-form .form-control {
+	border-width: 2.3px;
+}
+
+.my-form .form-group label {
+	width: 100%;
+	margin-top: 16px;
+}
+
+@media screen and (max-width: 425px) {
+	.create .card-wrapper {
+		width: 90%;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.create .card.fat {
+		padding: 0;
+	}
+	.create .card.fat .card-body {
+		padding: 15px;
+	}
+}
+
+/* Buttons */
+.confirm-button {
+	background-color: #5e2ced;
+	padding: 12px 30px;
+	border: none;
+	border-radius: 20px;
+	color: #ffffff;
+	font-size: 16px;
+	text-transform: capitalize;
+	transition: all 0.5s ease;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	font-weight: 500;
+	margin-top: 10px;
+}
+
+.confirm-button:focus {
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-button:hover {
+	color: #5e2ced;
+	background-color: #ffffff;
+}
+
+.cancel-button {
+	background-color: #c0c0c0;
+	padding: 12px 30px;
+	border: none;
+	border-radius: 20px;
+	color: #ffffff;
+	font-size: 16px;
+	text-transform: capitalize;
+	transition: all 0.5s ease;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	font-weight: 500;
+	margin-top: 10px;
+}
+
+.cancel-button:focus {
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-button:hover {
+	color: #000000;
+	background-color: #ffffff;
+}
+
+
+©2021 GitHub:enzosandoval, Inc
+
+
+
+
+
+
+.

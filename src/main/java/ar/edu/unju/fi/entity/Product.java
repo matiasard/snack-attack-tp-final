@@ -4,15 +4,22 @@
 package ar.edu.unju.fi.entity;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
@@ -28,12 +35,12 @@ import org.springframework.stereotype.Component;
 public class Product {
 
 	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	@Column(name = "productCode", unique = true, nullable = false, updatable = false)
-	private String code;
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	@Column(name = "productCode")
+	private String id;
 
-	@NotBlank
+	@NotEmpty
 	@Length(max = 70)
 	@Column(name = "productName", nullable = false, length = 70)
 	private String name;
@@ -52,31 +59,42 @@ public class Product {
 	@Column(name = "productDescription", nullable = false)
 	private String description;
 
-	@NotBlank
-	@Length(max = 6)
-	@Column(nullable = false, length = 6)
+	@NotNull
+	@Column(nullable = false)
 	private Integer quantityInStock;
 
-	@NotBlank
 	@Column(nullable = false)
 	private BigDecimal buyPrice;
 
-	@NotBlank
 	@Column(nullable = false)
 	private BigDecimal MSRP;
 
-	@ManyToOne
+	@Lob
+	@Column(name = "image", columnDefinition = "LONGBLOB")
+	private String image;
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "productLine")
-	private ProductLines productLines;
+	private ProductLines productLine;
+
+	@OneToMany(mappedBy = "id.product")
+	private List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
 
 	public Product() {
 	}
 
 	/**
-	 * @return the code
+	 * @return the id
 	 */
-	public String getCode() {
-		return code;
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	/**
@@ -178,24 +196,45 @@ public class Product {
 	}
 
 	/**
-	 * @return the productLines
+	 * @return the image
 	 */
-	public ProductLines getProductLines() {
-		return productLines;
+	public String getImage() {
+		return image;
 	}
 
 	/**
-	 * @param productLines the productLines to set
+	 * @param image the image to set
 	 */
-	public void setProductLines(ProductLines productLines) {
-		this.productLines = productLines;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [code=" + code + ", name=" + name + ", scale=" + scale + ", vendor=" + vendor + ", description="
-				+ description + ", quantityInStock=" + quantityInStock + ", buyPrice=" + buyPrice + ", MSRP=" + MSRP
-				+ ", productLines=" + productLines + "]";
+	/**
+	 * @return the productLine
+	 */
+	public ProductLines getProductLine() {
+		return productLine;
+	}
+
+	/**
+	 * @param productLine the productLine to set
+	 */
+	public void setProductLine(ProductLines productLine) {
+		this.productLine = productLine;
+	}
+
+	/**
+	 * @return the orderDetails
+	 */
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+
+	/**
+	 * @param orderDetails the orderDetails to set
+	 */
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 }

@@ -3,18 +3,17 @@
  */
 package ar.edu.unju.fi.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
-
-import lombok.EqualsAndHashCode;
 
 /**
  * @author Enzo Sandoval
@@ -23,24 +22,27 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Component
 @Table(name = "orderdetails")
-@EqualsAndHashCode(of = "id")
-public class OrderDetails {
+public class OrderDetails implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
 	private OrderDetailsId id;
 
-	@NotBlank
+	@NotNull
 	@Length(max = 11)
-	@Column(nullable = false, length = 11)
+	@Column
 	private Integer quantityOrdered;
 
-	@NotBlank
-	@Column(nullable = false)
+	@NotNull
+	@Column
 	private BigDecimal priceEach;
 
-	@NotBlank
-	@Length(max = 6)
-	@Column(nullable = false, length = 6)
+	@NotNull
+	@Column(length = 6)
 	private Integer orderLineNumber;
 
 	public OrderDetails() {

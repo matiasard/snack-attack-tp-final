@@ -10,29 +10,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import lombok.EqualsAndHashCode;
-
 /**
  * @author Enzo Sandoval
  *
  */
-@EqualsAndHashCode
 @Embeddable
-public class OrderDetailsId implements Serializable{
+public class OrderDetailsId implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2142251149308551943L;
+	private static final long serialVersionUID = 1L;
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "orderNumber", nullable = false)
+	@JoinColumn(name = "orderNumber")
 	private Order order;
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "productCode", nullable = false)
+	@JoinColumn(name = "productCode")
 	private Product product;
 
 	public OrderDetailsId() {

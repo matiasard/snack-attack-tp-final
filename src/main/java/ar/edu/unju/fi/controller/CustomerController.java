@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ar.edu.unju.fi.entity.Customer;
 import ar.edu.unju.fi.service.ICustomerService;
 
+
 /**
  * @author Enzo Sandoval
  *
@@ -35,7 +36,7 @@ public class CustomerController {
 	@GetMapping("/customers")
 	public String getCustomersPage(@RequestParam Map<String, Object> params, Model model) {
 		int page = params.get("page") != null ? Integer.valueOf(params.get("page").toString()) - 1 : 0;
-		PageRequest pageRequest = PageRequest.of(page, 5);
+		PageRequest pageRequest = PageRequest.of(page, 10);
 		Page<Customer> pageCustomers = customerService.findAll(pageRequest);
 		int totalPage = pageCustomers.getTotalPages();
 		if (totalPage > 0) {
@@ -47,7 +48,7 @@ public class CustomerController {
 		model.addAttribute("next", page + 2);
 		model.addAttribute("prev", page);
 		model.addAttribute("last", totalPage);
-		return "customers";
+		return "customer-crud";
 	}
 
 }
