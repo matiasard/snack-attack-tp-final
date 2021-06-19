@@ -74,13 +74,13 @@ body {
 .home {
 	min-height: 100vh;
 	width: 100vw;;
-	padding: 150px;
+	padding: 150px 150px 150px 50px;
 	background-color: #5e2ced;
-	background-image: url(../img/bannerPrincipal/bg-auto.jpg);
-	background-position: 25% 40%;
+	background-image: url(../img/bannerPrincipal/bg-auto-3.jpg);
+	background-position: 33% 10%;
 }
-
-.home::after {
+/* OPACIDAD DE IMAGEN */
+/* .home::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -88,15 +88,15 @@ body {
 	left: 0;
 	right: 0;
 	background-color: rgba(0, 0, 0, 0.6);
-}
+} */
 
 .home-text {
 	padding-top: 30px;
-	z-index: 1;
+	/* z-index: 1; */
 }
 
 .home-text h1 {
-	font-size: 45px;
+	/* font-size: 45px; */
 	font-weight: 700;
 	color: #ffffff;
 	margin: 0 0 20px;
@@ -183,6 +183,11 @@ rotate(
 }
 }
 
+.banner-gallery{
+	background-image: url(../img/bannerPrincipal/banner-gallery.jpg);
+	background-position: 7% 40%;
+}
+
 /* Productos */
 .productos {
 	padding: 30px 0 40px;
@@ -194,10 +199,12 @@ rotate(
 
 .box__card {
 	transition: box-shadow .3s;
+	transition: transform .3s;
 }
 
 .box__card:hover {
 	box-shadow: 0 0 11px rgba(33, 33, 33, .5);
+	transform: scale(1.02);
 }
 
 #non-effecteed-link, #non-effecteed-link:hover {

@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
-<link rel="stylesheet"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-<link rel="stylesheet"
-	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
-<link rel="stylesheet" th:href="@{/css/styles.css}">
-<link rel="stylesheet" th:href="@{/css/header.css}">
-<link rel="stylesheet" th:href="@{/css/footer.css}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	<link rel="stylesheet" th:href="@{/css/header.css}">
+	<link rel="stylesheet" th:href="@{/css/footer.css}">
 </head>
+
 <body>
 	<div th:replace="layout/header :: header"></div>
 	<div class="container-fluid">
 		<div class="row">
 			<section class="home">
 				<div class="row">
-					<div class="col-md-7">
-						<div class="home-text">
-							<h1>
-								Miniature Toys <br> <span style="color: red;"> Japan</span>
-							</h1>
-							<p style="text-align: justify;">We are a store dedicated to
-								the sale of classic scale transport vehicles.</p>
-							<!--	<div class="home-btn">
+					<div class="col-md-7 home-text">
+						<h1 class="display-1">
+							Miniature Toys <br> <span style="color: red;"> Japan</span>
+						</h1>
+						<p style="text-align: justify;">We are a store dedicated to
+							the sale of classic scale transport vehicles.</p>
+						<!--	<div class="home-btn">
 								<a href="#" class="btn main-button">Buy Now</a>
 							</div>  -->
-						</div>
+
 					</div>
 					<!--	<div class="col-md-5 order-first order-md-last">
 						<div class="home-img">
@@ -50,8 +49,10 @@
 								</div>
 								<div class="col-md-9">
 									<p class="mb-0 forma-de-pago__titulo">Visa</p>
-									<a href="#"><p class="mb-0 forma-de-pago__sub-titulo">See
-											bank promotions</p></a>
+									<a href="#">
+										<p class="mb-0 forma-de-pago__sub-titulo">See
+											bank promotions</p>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -62,8 +63,10 @@
 								</div>
 								<div class="col-md-9">
 									<p class="mb-0 forma-de-pago__titulo">Master Card</p>
-									<a href="#"><p class="mb-0 forma-de-pago__sub-titulo">See
-											more...</p></a>
+									<a href="#">
+										<p class="mb-0 forma-de-pago__sub-titulo">See
+											more...</p>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -74,30 +77,106 @@
 								</div>
 								<div class="col-md-9">
 									<p class="mb-0 forma-de-pago__titulo">Cash</p>
-									<a href="#"><p class="mb-0 forma-de-pago__sub-titulo">See
-											more...</p></a>
+									<a href="#">
+										<p class="mb-0 forma-de-pago__sub-titulo">See
+											more...</p>
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 			</section>
 		</div>
+		<div class="banner-gallery mt-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 text-center py-3">
+						<h2 class="display-3 text-white font-weight-normal">Categories</h2>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="row">
-			<section class="productos">
+			<section class="productos col-12">
 				<div class="container-fluid">
-					<h5 style="display: inline">Categories</h5>
 					<div style="height: 30px;"></div>
 					<div class="row col-lg-12">
-						<div class="col-md-4" style="padding-bottom: 16px;"
-							th:each="p, i : ${productLines}">
-							<a id="non-effecteed-link"
-								th:href="@{/search/{category}(category=${p.productLine})}">
+						<!-- <div class="col-md-4" style="padding-bottom: 16px;" th:each="p, i : ${productLines}">
+							<a id="non-effecteed-link" th:href="@{/search/{category}(category=${p.productLine})}">
 								<div class="card h-100 box__card">
-									<img class="card-img-top"
-										th:src="*{'data:image/png;base64,'+p.image}"
-										alt="Card image cap">
+									<img class="card-img-top" th:src="*{'data:image/png;base64,'+p.image}" alt="Card image cap">
 									<div class="card-body">
 										<h6 class="card-title" th:text="${p.productLine}"></h6>
+									</div>
+								</div>
+							</a>
+						</div> -->
+						<div class="col-sm-8 col-md-6 col-lg-4 my-3">
+							<a id="non-effecteed-link" th:href="@{search/Classic%20Cars}">
+								<div class="card h-100 box__card">
+									<img class="card-img-top" style="height: 300px;" th:src="@{../img/productos/Lamborghini-LP750-4.jpg}" alt="Card image">
+									<div class="card-body">
+										<h6 class="card-title">Classic Cars</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-8 col-md-6 col-lg-4 my-3">
+							<a id="non-effecteed-link" th:href="@{search/Motorcycles}">
+								<div class="card h-100 box__card">
+									<img class="card-img-top" style="height: 300px;" th:src="@{../img/productos/MOTO-GUZZI-California-1100i.jpg}" alt="Card image">
+									<div class="card-body">
+										<h6 class="card-title">Motorcycles</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-8 col-md-6 col-lg-4 my-3">
+							<a id="non-effecteed-link" th:href="@{search/Planes}">
+								<div class="card h-100 box__card">
+									<img class="card-img-top" style="height: 300px;" th:src="@{../img/productos/planes-F4U-(Bird-Cage).jpg}" alt="Card image">
+									<div class="card-body">
+										<h6 class="card-title">Planes</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-8 col-md-6 col-lg-4 my-3">
+							<a id="non-effecteed-link" th:href="@{search/Ships}">
+								<div class="card h-100 box__card">
+									<img class="card-img-top" style="height: 300px;" th:src="@{../img/productos/ships-HMS-Bounty-2.jpg}" alt="Card image">
+									<div class="card-body">
+										<h6 class="card-title">Ships</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-8 col-md-6 col-lg-4 my-3">
+							<a id="non-effecteed-link" th:href="@{search/Trains}">
+								<div class="card h-100 box__card">
+									<img class="card-img-top" style="height: 300px;" th:src="@{../img/productos/train-Chicago-Surface-2.jpg}" alt="Card image">
+									<div class="card-body">
+										<h6 class="card-title">Trains</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-8 col-md-6 col-lg-4 my-3">
+							<a id="non-effecteed-link" th:href="@{search/Trucks%20and%20Buses}">
+								<div class="card h-100 box__card">
+									<img class="card-img-top" style="height: 300px;" th:src="@{../img/productos/truck-and-buses-Volkswagen-Microbus.jpg}" alt="Card image">
+									<div class="card-body">
+										<h6 class="card-title">Trains</h6>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="col-sm-8 col-md-6 col-lg-4 offset-md-4 my-3">
+							<a id="non-effecteed-link" th:href="@{search/Vintage%20Cars}">
+								<div class="card h-100 box__card">
+									<img class="card-img-top" style="height: 300px;" th:src="@{../img/productos/Classic-Cars-Porsche-356-A-Roadster.jpg}" alt="Card image">
+									<div class="card-body">
+										<h6 class="card-title">Vintage Cars</h6>
 									</div>
 								</div>
 							</a>
@@ -106,10 +185,26 @@
 				</div>
 			</section>
 		</div>
+		<!-- Mini catalogo -->
+		<section>
+			<div class="banner-gallery">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 text-center py-3">
+							<h2 class="display-3 text-white font-weight-normal">Gallery</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</section>
+
 	</div>
 	<footer th:replace="layout/footer :: footer"></footer>
 </body>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
 </html>
