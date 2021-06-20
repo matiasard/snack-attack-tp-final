@@ -15,4 +15,7 @@ public interface IOfficeService {
 
 	public List<Office> obtenterOficinas();
 	
+    public Office buscarOficina(Long id) throws Exception;
+	
+	public void guardar (Office office);
 }

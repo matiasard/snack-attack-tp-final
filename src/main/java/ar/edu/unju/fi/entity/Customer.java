@@ -28,8 +28,8 @@ import org.springframework.stereotype.Component;
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Length(max = 11)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Length(max = 11)
 	@Column(name = "customerNumber", unique = true, nullable = false, updatable = false)
 	private Long number;
 
@@ -83,8 +83,8 @@ public class Customer {
 	@Column(name = "country", nullable = false, length = 50)
 	private String country;
 
-	@NotBlank
-	@Length(max = 50)
+	//@NotBlank
+	//@Length(max = 50)
 	@Column(nullable = false, length = 50)
 	private BigDecimal creditLimit;
 
@@ -100,6 +100,13 @@ public class Customer {
 	 */
 	public Long getNumber() {
 		return number;
+	}
+	
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	/**

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 
 /**
  * @author Enzo Sandoval
@@ -22,17 +22,23 @@ public class OrderDetailsId implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@NotNull
+	//@NotNull
 	@ManyToOne
 	@JoinColumn(name = "orderNumber")
 	private Order order;
 
-	@NotNull
+	//@NotNull
 	@ManyToOne
 	@JoinColumn(name = "productCode")
 	private Product product;
 
 	public OrderDetailsId() {
+	}
+	
+	public OrderDetailsId(Order order,Product product) {
+		super();
+		this.order = order;
+		this.product = product;
 	}
 
 	/**

@@ -13,6 +13,8 @@ import ar.edu.unju.fi.entity.Payment;
  */
 public interface IPaymentService {
 
+	public void guardar (Payment payment);
+	
 	public List<Payment> obtenerPagos();
 	
 }

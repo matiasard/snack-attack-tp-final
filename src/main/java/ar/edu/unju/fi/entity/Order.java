@@ -31,16 +31,16 @@ import org.springframework.stereotype.Component;
 public class Order {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Length(max = 11)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Length(max = 11)
 	@Column(name = "orderNumber", unique = true, nullable = false, updatable = false)
 	private Long number;
 
-	@NotBlank
+	//@NotBlank
 	@Column(nullable = false)
 	private LocalDate orderDate;
 
-	@NotBlank
+	//@NotBlank
 	@Column(nullable = false)
 	private LocalDate requiredDate;
 
@@ -71,6 +71,14 @@ public class Order {
 	public Long getNumber() {
 		return number;
 	}
+	
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(Long number) {
+		this.number = number;
+	
+}
 
 	/**
 	 * @return the orderDate
