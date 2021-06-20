@@ -5,6 +5,7 @@ package ar.edu.unju.fi.service.imp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,6 +37,30 @@ public class OfficeServiceImp implements IOfficeService {
 		officeRepository.findAll().forEach(oficinas::add);
 		LOGGER.info("METHOD: Lista tamaño: " +  oficinas.size());
 		return oficinas;
+	}
+	
+	@Override
+	public Office buscarOficina(Long id) throws Exception {
+		LOGGER.info("SERVICE: EmployeeService");
+		LOGGER.info("METHOD: buscarEmpleado()");
+		Optional<Office> optional =officeRepository.findById(id);
+		Office office = null;
+		if (optional.isPresent()) {
+			office= optional.get();
+			
+		} else {
+			throw new Exception("Oficina no encontrada");
+		}
+		return office;
+	}
+
+
+	@Override
+	public void guardar(Office office) {
+		LOGGER.info("SERVICE: ProductService");
+		LOGGER.info("METHOD: guardar()");
+		officeRepository.save(office);
+		LOGGER.info("RESULT: Se guardó la oficina");
 	}
 
 }

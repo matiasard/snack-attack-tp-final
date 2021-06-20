@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
+//import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
 /**
@@ -33,7 +33,7 @@ public class OrderDetails implements Serializable {
 	private OrderDetailsId id;
 
 	@NotNull
-	@Length(max = 11)
+	//@Length(max = 11)
 	@Column
 	private Integer quantityOrdered;
 
@@ -55,6 +55,13 @@ public class OrderDetails implements Serializable {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(OrderDetailsId id) {
+		this.id = id;
+	}
+	
 	/**
 	 * @return the quantityOrdered
 	 */

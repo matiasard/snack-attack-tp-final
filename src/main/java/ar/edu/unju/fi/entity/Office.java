@@ -24,8 +24,8 @@ import org.springframework.stereotype.Component;
 public class Office {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Length(max = 10)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Length(max = 10)
 	@Column(name = "officeCode", unique = true, nullable = false, updatable = false)
 	private Long code;
 
@@ -51,6 +51,11 @@ public class Office {
 
 	@NotBlank
 	@Length(max = 50)
+	@Column(name = "country", nullable = false, length = 50)
+	private String country;
+	
+	@NotBlank
+	@Length(max = 50)
 	@Column(name = "state", nullable = false, length = 50)
 	private String state;
 
@@ -74,6 +79,13 @@ public class Office {
 		return code;
 	}
 
+	/**
+	 * @param code the code to set
+	 */
+	public void setCode(Long code) {
+		this.code = code;
+	}
+	
 	/**
 	 * @return the phone
 	 */
@@ -128,6 +140,20 @@ public class Office {
 	 */
 	public void setCity(String city) {
 		this.city = city;
+	}
+	
+	/**
+	 * @return the country
+	 */
+	public String getCountry() {
+		return country;
+	}
+
+	/**
+	 * @param country the country to set
+	 */
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	/**

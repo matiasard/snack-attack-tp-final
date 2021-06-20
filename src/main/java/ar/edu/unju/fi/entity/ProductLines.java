@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 public class ProductLines {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Length(max = 50)
 	@Column(name = "productLine")
 	private String productLine;

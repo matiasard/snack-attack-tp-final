@@ -37,4 +37,12 @@ public class PaymentServiceImp implements IPaymentService {
 		return pagos;
 	}
 
+	@Override
+	public void guardar(Payment payment) {
+		LOGGER.info("SERVICE: PaymentService");
+		LOGGER.info("METHOD: guardar()");
+		paymentRepository.save(payment);
+		LOGGER.info("RESULT: Se guardó el pago" + payment.getId());
+	}
+
 }
