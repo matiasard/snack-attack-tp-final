@@ -25,7 +25,7 @@ class CustomerTest {
 	@Test
 	void test() throws Exception {
 		
-		BigDecimal bd = new BigDecimal("1800");
+		BigDecimal bd = new BigDecimal("12345678.99");
 		Employee employee = employeeService.buscarEmpleado((long) 1002);
 		Customer customer = new Customer();
 		customer.setNumber((long) 100);
