@@ -1,193 +1,170 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home</title>
-<link rel="stylesheet"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-<link rel="stylesheet"
-	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
-<link rel="stylesheet" th:href="@{/css/styles.css}">
-<link rel="stylesheet" th:href="@{/css/header.css}">
-<link rel="stylesheet" th:href="@{/css/footer.css}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	<link rel="stylesheet" th:href="@{/css/header.css}">
+	<link rel="stylesheet" th:href="@{/css/footer.css}">
 </head>
+
 <body>
-	<div th:replace="layout/header :: header"></div>
+	<!-- NAV SUPERIOR -->
+	<div th:replace="layout/nav-admin :: nav-admin"></div>
+	<!-- FIN NAV SUPERIOR -->
+
+	<!-- CONTENIDO PRINCIPAL -->
 	<div class="container-fluid">
 		<div class="row">
-			<section class="home">
-				<div class="row">
-					<div class="col-md-7" style="z-index: 1;">
-						<div class="home-text">
-							<h1>Encuentra el coche de tus sueños</h1>
-							<p style="text-align: justify;">Seguro que encontrarás el coche perfecto, nuestro sistema de búsqueda te permite ajustar tu búsqueda exactamente a lo que estás buscando.</p>
-							<div class="home-btn">
-								<a href="#" class="btn btn-1">Ver Catalogo</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-
-    <!-- Formas de pagos -->
-		<div class="row">
-			<section class="col-md-12">
-				<div class="col-xs-12 pt-5">
-					<div class="row mx-3 bg-white shadow">
-						<div class="col-md-4 py-3">
-							<div class="row">
-								<div class="col-md-3">
-									<img alt="icon" th:src="@{/img/icons/credit-card-v1.svg}">
-								</div>
-								<div class="col-md-9">
-									<p class="mb-0 forma-de-pago__titulo">Hasta 6 cuotas sin
-										interés</p>
-									<a href="#"><p class="mb-0 forma-de-pago__sub-titulo">Ver
-											promociones bancarias</p></a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4  py-3">
-							<div class="row">
-								<div class="col-md-3">
-									<img alt="icon" th:src="@{/img/icons/debit-card-v1.svg}">
-								</div>
-								<div class="col-md-9">
-									<p class="mb-0 forma-de-pago__titulo">Tarjeta de débito</p>
-									<a href="#"><p class="mb-0 forma-de-pago__sub-titulo">Ver
-											más</p></a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4  py-3">
-							<div class="row">
-								<div class="col-md-3">
-									<img alt="icon" th:src="@{/img/icons/payment-agreement-v1.svg}">
-								</div>
-								<div class="col-md-9">
-									<p class="mb-0 forma-de-pago__titulo">Efectivo</p>
-									<a href="#"><p class="mb-0 forma-de-pago__sub-titulo">Ver
-											más</p></a>
-								</div>
-							</div>
-						</div>
-					</div>
-          <!-- Productos Destacados -->
-					<div class="container my-3 mt-5">
-						<h2>Ver todas las Categorias</h2>
-					</div>
-					<div class="row mx-3 mb-3">
-						<div class="card mx-sm-auto my-sm-3 shadow" style="width: 450px;">
-							<div class="row ">
-								<div class="col-md-5">
-									<img class="pr-5" alt="icon"
-										th:src="@{/img/productos/computadoras.jpg}">
-								</div>
-								<div class="col-md-7 m-auto">
-									<div class="card-body">
-										<h5 class="card-title categoria__titulo">COMPUTADORAS</h5>
-										<a th:href="@{/productos}"><p
-												class="card-text categoria__sub-titulo">Ver productos</p></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="card mx-sm-auto my-sm-3 shadow" style="width: 450px;">
-							<div class="row ">
-								<div class="col-md-5">
-									<img class="pr-5" alt="icon"
-										th:src="@{/img/productos/auriculares.jpg}">
-								</div>
-								<div class="col-md-7 m-auto">
-									<div class="card-body">
-										<h5 class="card-title categoria__titulo">AURICULARES</h5>
-										<a th:href="@{/productos}"><p
-												class="card-text categoria__sub-titulo">Ver productos</p></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="card mx-sm-auto my-sm-3 shadow" style="width: 450px;">
-							<div class="row ">
-								<div class="col-md-5">
-									<img class="pr-4" style="max-width: 230px;" alt="icon"
-										th:src="@{/img/productos/consola-video-juegos.jpg}">
-								</div>
-								<div class="col-md-7 m-auto">
-									<div class="card-body">
-										<h5 class="card-title categoria__titulo">CONSOLAS DE
-											VIDEO JUEGOS</h5>
-										<a th:href="@{/productos}"><p
-												class="card-text categoria__sub-titulo">Ver productos</p></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="card mx-sm-auto my-sm-3 shadow" style="width: 450px;">
-							<div class="row ">
-								<div class="col-md-5">
-									<img class="pr-5" alt="icon"
-										th:src="@{/img/productos/Silla.jpg}">
-								</div>
-								<div class="col-md-7 m-auto">
-									<div class="card-body">
-										<h5 class="card-title categoria__titulo">SILLAS</h5>
-										<a th:href="@{/productos}"><p
-												class="card-text categoria__sub-titulo">Ver productos</p></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			</section>
-		</div>
-		<!--  
-		
-		<div class="row">
-			<section class="productos">
-				<div class="container-fluid">
+			<!-- Colores para el NavBar -->
+			<!-- background-color: #32297c!important; -->
+			<!-- background-color: #373c74!important; -->
+			<!-- background-color: #5a63b7!important; -->
+			<!-- NAV MENU LATERAL IZQUIERDO -->
+			<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar bg-dark mt-3 mt-md-0 h-100 collapse"
+				style="box-shadow: inset -2px 0 0 rgb(0 0 0 / 10%); position: fixed; z-index: 100; 
+				background-color: #0c2246!important; padding-top: 6rem;">
+				<!-- CONTENEDOR NAV -->
+				<div class="position-sticky">
 					
-					<h5 style="display: inline">Ofertas</h5>
-					<a style="padding-left: 20px" href="#">Ver todas</a>
-					<div style="height: 30px;"></div>
-					<div  class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;" th:each="p, i : ${productos}"
-							th:unless="${i.index > 16}">
-							<a id="non-effecteed-link"
-								th:href="@{/comprar/{id}(id=${p.codigo})}">
-								<div class="card h-100 box__card">
-									<img class="card-img-top"
-										th:src="*{'data:image/png;base64,'+p.imagen}"
-										alt="Card image cap">
-									<div class="card-body">
-										<h6 class="card-title" th:text="${p.nombre}"></h6>
-										<p class="card-text">$ <span
-											th:text="${#numbers.formatDecimal(p.precio, 0, 'COMMA', 2, 'POINT')}">10.00</span></p>
-									</div>
-								</div>
+					<!-- AVATAR USER -->
+					<div class="d-flex justify-content-center pl-5 pl-md-0 pb-2">
+						<img src="https://uifaces.co/our-content/donated/fyXUlj0e.jpg"
+							class="border border-primary rounded-circle" alt="user-avatar" 
+							style="max-width: 90px;">
+					</div>
+					<!-- FIN AVATAR USER -->
+
+					<!-- NOMBRE DEL USUARIO - AGREAR TH:TEXT="" -->
+					<p class="text-white text-center pl-5 pl-md-0">User</p>
+					<!-- FIN NOMBRE DEL USUARIO - AGREAR TH:TEXT="" -->
+
+					<h2 class="text-white text-center pl-5 pl-md-0 pb-2">Menu</h2>
+					<!-- MENU NAV-->
+					<ul class="nav flex-column">
+						<li class="nav-item offset-5 offset-md-0">
+							<a class="nav-link active" aria-current="page" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-home">
+									<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+									<polyline points="9 22 9 12 15 12 15 22"></polyline>
+								</svg>
+								<span class="ml-2">Home</span>
 							</a>
+						</li>
+						<li class="nav-item offset-5 offset-md-0">
+							<a class="nav-link" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-file">
+									<path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+									<polyline points="13 2 13 9 20 9"></polyline>
+								</svg>
+								<span class="ml-2">Orders</span>
+							</a>
+						</li>
+						<li class="nav-item offset-5 offset-md-0">
+							<a class="nav-link" th:href="@{/products}">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-shopping-cart">
+									<circle cx="9" cy="21" r="1"></circle>
+									<circle cx="20" cy="21" r="1"></circle>
+									<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+								</svg>
+								<span class="ml-2">Products</span>
+							</a>
+						</li>
+						<li class="nav-item offset-5 offset-md-0">
+							<a class="nav-link" th:href="@{/customers}">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-users">
+									<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+									<circle cx="9" cy="7" r="4"></circle>
+									<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+									<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+								</svg>
+								<span class="ml-2">Customers</span>
+							</a>
+						</li>
+						<li class="nav-item offset-5 offset-md-0">
+							<a class="nav-link" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-bar-chart-2">
+									<line x1="18" y1="20" x2="18" y2="10"></line>
+									<line x1="12" y1="20" x2="12" y2="4"></line>
+									<line x1="6" y1="20" x2="6" y2="14"></line>
+								</svg>
+								<span class="ml-2">Payments</span>
+							</a>
+						</li>
+						<li class="nav-item offset-5 offset-md-0">
+							<a class="nav-link" href="#">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="feather feather-layers">
+									<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+									<polyline points="2 17 12 22 22 17"></polyline>
+									<polyline points="2 12 12 17 22 12"></polyline>
+								</svg>
+								<span class="ml-2">Employees</span>
+							</a>
+						</li>
+
+					</ul>
+					<!-- FIN MENU NAV-->
+				</div>
+			</nav>
+			<!-- ---------------- FIN NAV MENU LATERAL IZQUIERDO ----------------- -->
+
+			<!-- CONTENIDO PRINCIPAL -->
+			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+				
+				<!-- Título de la página de inicio -->
+				<div class="page-title-box">
+					<div class="container-fluid ">
+						<div class="row align-items-center">
+							<div class="col-sm-6">
+								<div class="page-title">
+									<h2 class="text-white pt-5 pt-md-0">PANEL ADMIN</h2>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-		</div> -->
 
-    <!-- MODIFICAR LUEGO -->
-		<div class="row">
+				<!-- Contenido -->
+				<h1>1</h1>
+				
+				<div class="row">
+					<h1>2</h1>
+				</div>
+
+
+			</main>
+
+		</div>
+
+
+		<!-- MODIFICAR LUEGO -->
+		<!-- <div class="row">
 			<section class="productos">
 				<div class="container-fluid">
 					<h5 style="display: inline">Productos</h5>
 					<div class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;"
-							th:each="p, i : ${products}" th:unless="${i.index > 6}">
+						<div class="col-md-3" style="padding-bottom: 16px;" th:each="p, i : ${products}" th:unless="${i.index > 6}">
 							<div class="card h-100 box__card">
 								<span th:text="${p.name}"></span>
 								<div class="card-body">
 									<p class="card-text">
-										$ <span
-											th:text="${#numbers.formatDecimal(p.buyPrice, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+										$ <span th:text="${#numbers.formatDecimal(p.buyPrice, 0, 'COMMA', 2, 'POINT')}">10.00</span>
 									</p>
 								</div>
 							</div>
@@ -281,10 +258,14 @@
 					</div>
 				</div>
 			</section>
-		</div>
+		</div> -->
 		
 	</div>
-	<footer th:replace="layout/footer :: footer"></footer>
+	<!-- FIN CONTENIDO -->
+
+	<!-- FOOTER -->
+	<!-- <footer th:replace="layout/footer :: footer"></footer> -->
+	<!-- FIN FOOTER -->
 </body>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>

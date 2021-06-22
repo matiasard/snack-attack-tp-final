@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header th:fragment="nav-admin" class="nav-admin fixed-top">
+    <!-- background-color: #030848!important; -->
+    <!-- background-color: #32297c!important; -->
+    <!-- background-color: #6b74f9!important; -->
+    <!-- background-color: #776bdf!important; -->
+    <!-- background-color: #8b7ee7!important; -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark"
+      style="box-shadow: inset 0 -1px 0 rgb(0 0 0 / 10%); background-color: #32297c!important;">
+      <div class="container">
+        <a class="navbar-brand text-white" href="#">Navbar</a>
+
+        <button class="navbar-toggler d-md-none mb-3 collapsed" type="button" data-toggle="collapse"
+          data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="dropdown justify-content-end">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"><img src="https://uifaces.co/our-content/donated/fyXUlj0e.jpg"
+              class="w-25 border border-primary rounded-circle" alt="user-avatar">
+          </a>
+
+          <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Setting</a>
+            <a class="dropdown-item" href="#">Another</a>
+            <a class="dropdown-item" href="#">Log Out</a>
+          </div>
+        </div>
+      </div>
+    </nav> -->
+
+
+    <nav class="navbar navbar-light bg-dark p-3"
+      style="box-shadow: inset 0 -1px 0 rgb(0 0 0 / 10%); background-color: #32297c!important;">
+      <div class="d-flex col-12 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+        <a class="navbar-brand text-white" href="#">
+          Japan Toys
+        </a>
+        <div class="d-flex">
+          <!-- BARRA DE BUSQUEDA -->
+          <!-- <div class="col-4 col-md-8">
+            <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+          </div> -->
+          <!-- FIN BARRA DE BUSQUEDA -->
+          <div class="dropdown mx-3">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-expanded="false">Options</button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" th:href="@{/signin}">Log Out</a></li>
+            </ul>
+          </div>
+          <!-- BOTON MENU DESPLEGABLE -->
+          <button class="navbar-toggler d-md-none collapsed mb-3 bg-white" type="button" data-toggle="collapse"
+            data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      </div>
+    </nav>
+  </header>
+</body>
+
+</html>
