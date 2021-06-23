@@ -28,8 +28,8 @@ import org.springframework.stereotype.Component;
 public class Employee {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Length(max = 11)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Length(max = 11)
 	@Column(name = "employeeNumber", unique = true, nullable = false, updatable = false)
 	private Long number;
 
@@ -75,6 +75,13 @@ public class Employee {
 	 */
 	public Long getNumber() {
 		return number;
+	}
+	
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(Long number) {
+		this.number = number;
 	}
 
 	/**

@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
 public class Payment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Length(max = 11)
 	@Column(name = "checkNumber", unique = true, nullable = false, updatable = false)
 	private String id;
@@ -56,6 +56,13 @@ public class Payment {
 	 */
 	public String getId() {
 		return id;
+	}
+	
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	/**
