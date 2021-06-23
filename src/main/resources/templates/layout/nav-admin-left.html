@@ -13,561 +13,192 @@
 </head>
 
 <body>
-	<!-- NAV SUPERIOR -->
-	<div th:replace="layout/nav-admin :: nav-admin"></div>
-	<!-- FIN NAV SUPERIOR -->
 
-	<!-- CONTENIDO PRINCIPAL -->
-	<div class="container-fluid">
-		<div class="row">
-			<!-- background-color: #32297c!important; -->
-			<!-- background-color: #373c74!important; -->
-			<!-- background-color: #5a63b7!important; -->
-			<!-- NAV MENU LATERAL IZQUIERDO -->
-			<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar bg-dark mt-5 mt-md-0 h-100 collapse"
-				style="box-shadow: inset -2px 0 0 rgb(0 0 0 / 10%); position: fixed; z-index: 100; background-color: #0c2246!important; padding-top: 6rem;">
-				<!-- CONTENEDOR NAV -->
-				<div class="position-sticky mt-xs-5 mt-sm-3">
+	<!--  Colores para el NavBar Izquierdo  -->
+	<!-- background-color: #001d4c!important; -->
+	<!-- background-color: #0c2246!important; -->
+	<!-- background-color: #32297c!important; -->
+	<!-- background-color: #373c74!important; -->
+	<!-- background-color: #5a63b7!important; -->
 
-					<!-- AVATAR USER -->
-					<div class="d-flex justify-content-md-center offset-4 offset-md-0 pb-4">
-						<img src="https://uifaces.co/our-content/donated/fyXUlj0e.jpg"
-							class="border border-primary rounded-circle offset-2 offset-md-0" alt="user-avatar" style="max-width: 120px;">
-					</div>
-					<!-- FIN AVATAR USER -->
-					<div class="d-flex justify-content-center">
-					<h2 class="text-light pl-5 pl-md-0 pb-3">Menu</h2>
-				</div>
-					<!-- MENU NAV-->
-					<ul class="nav flex-column">
-						<li class="nav-item offset-5 offset-md-0">
-							<a class="nav-link active" aria-current="page" href="#">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-home">
-									<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-									<polyline points="9 22 9 12 15 12 15 22"></polyline>
-								</svg>
-								<span class="ml-2">Dashboard</span>
-							</a>
-						</li>
-						<li class="nav-item offset-5 offset-md-0">
-							<a class="nav-link" href="#">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-file">
-									<path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-									<polyline points="13 2 13 9 20 9"></polyline>
-								</svg>
-								<span class="ml-2">Orders</span>
-							</a>
-						</li>
-						<li class="nav-item offset-5 offset-md-0">
-							<a class="nav-link" th:href="@{/products}">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-shopping-cart">
-									<circle cx="9" cy="21" r="1"></circle>
-									<circle cx="20" cy="21" r="1"></circle>
-									<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-								</svg>
-								<span class="ml-2">Products</span>
-							</a>
-						</li>
-						<li class="nav-item offset-5 offset-md-0">
-							<a class="nav-link" th:href="@{/customers}">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-users">
-									<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-									<circle cx="9" cy="7" r="4"></circle>
-									<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-									<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-								</svg>
-								<span class="ml-2">Customers</span>
-							</a>
-						</li>
-						<li class="nav-item offset-5 offset-md-0">
-							<a class="nav-link" href="#">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-bar-chart-2">
-									<line x1="18" y1="20" x2="18" y2="10"></line>
-									<line x1="12" y1="20" x2="12" y2="4"></line>
-									<line x1="6" y1="20" x2="6" y2="14"></line>
-								</svg>
-								<span class="ml-2">Payments</span>
-							</a>
-						</li>
-						<li class="nav-item offset-5 offset-md-0">
-							<a class="nav-link" href="#">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-									class="feather feather-layers">
-									<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-									<polyline points="2 17 12 22 22 17"></polyline>
-									<polyline points="2 12 12 17 22 12"></polyline>
-								</svg>
-								<span class="ml-2">Integrations</span>
-							</a>
-						</li>
+	<!-- ---------------- NAV MENU LATERAL IZQUIERDO ----------------- -->
+	<nav th:fragment="nav-admin-left" id="sidebar"
+		class="col-md-3 col-lg-2 d-md-block sidebar bg-dark mt-3 mt-md-0 h-100 collapse" style="box-shadow: inset -2px 0 0 rgb(0 0 0 / 10%); position: fixed; z-index: 100; 
+		background-color: #001d4c!important; padding-top: 6rem;">
+		<!-- CONTENEDOR NAV -->
+		<div class="position-sticky">
 
+			<!-- AVATAR USER -->
+			<div class="d-flex justify-content-center pl-5 pl-md-0 pb-2">
+				<img src="https://uifaces.co/our-content/donated/fyXUlj0e.jpg" class="border border-primary rounded-circle"
+					alt="user-avatar" style="max-width: 90px;">
+			</div>
+			<!-- FIN AVATAR USER -->
 
-							<li class="nav-item">
-								<a class="btn btn-sm btn-secondary ml-3 mt-2"
-									href="">
-									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book" fill="currentColor"
-										xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd"
-											d="M1 2.828v9.923c.918-.35 2.107-.692 3.287-.81 1.094-.111 2.278-.039 3.213.492V2.687c-.654-.689-1.782-.886-3.112-.752-1.234.124-2.503.523-3.388.893zm7.5-.141v9.746c.935-.53 2.12-.603 3.213-.493 1.18.12 2.37.461 3.287.811V2.828c-.885-.37-2.154-.769-3.388-.893-1.33-.134-2.458.063-3.112.752zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z">
+			<!-- NOMBRE DEL USUARIO - AGREAR TH:TEXT="" -->
+			<p class="text-white text-center pl-5 pl-md-0">User</p>
+			<!-- FIN NOMBRE DEL USUARIO - AGREAR TH:TEXT="" -->
+
+			<h2 class="text-white text-center pl-5 pl-md-0 pb-2">Menu</h2>
+			<!-- MENU NAV-->
+			<ul class="nav flex-column">
+				<li class="nav-item offset-5 offset-md-0">
+					<a class="nav-link active" aria-current="page" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-home">
+							<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+							<polyline points="9 22 9 12 15 12 15 22"></polyline>
+						</svg>
+						<span class="ml-2">Home</span>
+					</a>
+				</li>
+				<li class="nav-item offset-5 offset-md-0">
+					<a class="nav-link" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-file">
+							<path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+							<polyline points="13 2 13 9 20 9"></polyline>
+						</svg>
+						<span class="ml-2">Orders</span>
+					</a>
+				</li>
+				<li class="nav-item offset-5 offset-md-0">
+					<a class="nav-link" th:href="@{/products}">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-shopping-cart">
+							<circle cx="9" cy="21" r="1"></circle>
+							<circle cx="20" cy="21" r="1"></circle>
+							<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+						</svg>
+						<span class="ml-2">Products</span>
+					</a>
+				</li>
+				<li class="nav-item offset-5 offset-md-0">
+					<a class="nav-link" th:href="@{/customers}">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="feather feather-users">
+							<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+							<circle cx="9" cy="7" r="4"></circle>
+							<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+							<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+						</svg>
+						<span class="ml-2">Customers</span>
+					</a>
+				</li>
+				<li class="nav-item offset-5 offset-md-0">
+					<a class="nav-link" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="25" viewBox="0 0 172 172"
+							style=" fill:#000000;">
+							<g transform="">
+								<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+									stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+									font-family="none" font-weight="none" font-size="none" text-anchor="none"
+									style="mix-blend-mode: normal">
+									<path d="M0,172v-172h172v172z" fill="none"></path>
+									<path d="" fill="none"></path>
+									<path d="" fill="none"></path>
+									<path d="" fill="none"></path>
+									<g fill="#007bff">
+										<path
+											d="M129.20673,10.12981l-34.9375,19.01923l-57.88462,31.62981l-34.9375,19.22596l15.09135,
+											27.28846v-21.29327c0,-5.47837 4.44471,-9.92308 9.92308,-9.92308h5.375l0.20673,-0.82692l76.69712,
+											-41.96635l5.78846,1.65385c0.15505,0.51683 0.33594,1.13702 0.62019,1.65385c2.27404,4.16046 7.41647,
+											5.78846 11.57692,3.51442c0.49099,-0.28426 0.82692,-0.8786 1.24038,-1.24038l5.99519,1.86058l13.23077,
+											24.1875l-1.65385,5.99519c-0.51683,0.15505 -1.13702,0.12921 -1.65385,0.41346c-1.9381,1.05949 -3.25601,
+											2.84255 -3.92788,4.75481h25.42788l-17.15865,-31.21635zM121.97115,53.54327c-3.90204,0.80108 -6.82212,
+											4.34135 -6.82212,8.47596c0,4.72897 3.74699,8.68269 8.47596,8.68269c4.72897,0 8.68269,-3.95372 8.68269,
+											-8.68269c0,-4.72897 -3.95372,-8.47596 -8.68269,-8.47596c-0.59435,0 -1.08533,-0.10337 -1.65385,0zM89.72115,
+											59.33173c-4.80649,-0.15504 -9.74219,0.93029 -14.47115,3.51442c-5.76262,3.15265 -10.07812,7.95913 -12.40385,
+											13.23077h47.96154c-0.38762,-2.01562 -1.05949,-3.92788 -2.06731,-5.78846c-3.74699,-6.84796 -11.00841,
+											-10.72416 -19.01923,-10.95673zM26.46154,86v86h145.53846v-86zM55.61058,96.54327h87.24038l4.34135,
+											4.34135c-0.10337,0.54267 -0.41346,1.05949 -0.41346,1.65385c0,4.75481 3.92788,8.68269 8.68269,8.68269c0.59435,
+											0 1.11118,-0.3101 1.65385,-0.41346l4.34135,4.34135v27.70192l-4.34135,4.34135c-0.54267,-0.10337 -1.05949,
+											-0.41346 -1.65385,-0.41346c-4.75481,0 -8.68269,3.92788 -8.68269,8.68269c0,0.59435 0.3101,1.11118 0.41346,
+											1.65385l-4.34135,4.34135h-87.24038l-4.34135,-4.34135c0.10337,-0.54267 0.41346,-1.05949 0.41346,-1.65385c0,
+											-4.75481 -3.92788,-8.68269 -8.68269,-8.68269c-0.59435,0 -1.11118,0.3101 -1.65385,0.41346l-4.34135,
+											-4.34135v-27.70192l4.34135,-4.34135c0.54267,0.10337 1.05949,0.41346 1.65385,0.41346c4.75481,0 8.68269,
+											-3.92788 8.68269,-8.68269c0,-0.59435 -0.3101,-1.11118 -0.41346,-1.65385zM99.23077,106.46635c-14.34195,
+											0 -26.04808,10.05228 -26.04808,22.53365c0,12.48137 11.70613,22.53365 26.04808,22.53365c14.34195,0 26.04808,
+											-10.05228 26.04808,-22.53365c0,-12.48137 -11.70613,-22.53365 -26.04808,-22.53365zM56.23077,
+											120.31731c-4.72897,0 -8.68269,3.95372 -8.68269,8.68269c0,4.72897 3.95372,8.68269 8.68269,8.68269c4.72897,
+											0 8.68269,-3.95372 8.68269,-8.68269c0,-4.72897 -3.95372,-8.68269 -8.68269,-8.68269zM142.23077,
+											120.31731c-4.75481,0 -8.68269,3.92788 -8.68269,8.68269c0,4.75481 3.92788,8.68269 8.68269,8.68269c4.75481,
+											0 8.68269,-3.92788 8.68269,-8.68269c0,-4.75481 -3.92788,-8.68269 -8.68269,-8.68269z">
 										</path>
-									</svg>
-									<span class="ml-2"></span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="btn btn-sm btn-warning ml-3 mt-2"
-									href="">⚡︎</a>
-							</li>
-							<li class="nav-item">
-								<a class="btn btn-sm btn-primary ml-3 mt-2" href="">❤️
-								</a>
-							</li>
-					</ul>
-					<!-- FIN MENU NAV-->
-				</div>
-			</nav>
-			<!-- ---------------- FIN NAV MENU LATERAL IZQUIERDO ----------------- -->
+									</g>
+								</g>
+							</g>
+						</svg>
+						<span class="ml-2">Payments</span>
+					</a>
+				</li>
+				<li class="nav-item offset-5 offset-md-0">
+					<a class="nav-link" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
+							style=" fill:#000000;">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#007bff">
+									<path
+										d="M50.16667,21.5c-7.90483,0 -14.33333,6.4285 -14.33333,
+										14.33333v114.66667h28.66667v-14.33333h-14.33333v-100.33333h71.66667v39.83659c1.247,0.73817 2.45817,
+										1.53938 3.58333,2.44955c3.1175,-2.5155 6.77967,-4.33517 10.75,-5.403v-36.88314c0,-7.90483 -6.4285,
+										-14.33333 -14.33333,-14.33333zM64.5,50.16667v14.33333h14.33333v-14.33333zM93.16667,
+										50.16667v14.33333h14.33333v-14.33333zM64.5,78.83333v14.33333h14.33333v-14.33333zM107.5,86c-7.91608,
+										0 -14.33333,6.41725 -14.33333,14.33333c0,7.91608 6.41725,14.33333 14.33333,14.33333c7.91608,0 14.33333,
+										-6.41725 14.33333,-14.33333c0,-7.91608 -6.41725,-14.33333 -14.33333,-14.33333zM143.33333,86c-7.91608,
+										0 -14.33333,6.41725 -14.33333,14.33333c0,7.91608 6.41725,14.33333 14.33333,14.33333c7.91608,0 14.33333,
+										-6.41725 14.33333,-14.33333c0,-7.91608 -6.41725,-14.33333 -14.33333,-14.33333zM64.5,
+										107.5v14.33333h14.33333v-14.33333zM107.5,129c-15.65917,0 -28.66667,6.51305 -28.66667,
+										15.88705v5.61295h35.83333h21.5h35.83333v-5.61295c0,-9.374 -13.0075,-15.88705 -28.66667,-15.88705c-6.77303,
+										0 -12.97376,1.27365 -17.91667,3.41536c-4.94291,-2.14172 -11.14364,-3.41536 -17.91667,-3.41536z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<span class="ml-2">Employees</span>
+					</a>
+				</li>
+				<li class="nav-item offset-5 offset-md-0">
+					<a class="nav-link" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
+							style=" fill:#000000;">
+							<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+								stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+								font-family="none" font-weight="none" font-size="none" text-anchor="none"
+								style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#007bff">
+									<path d="M86,7.16667c-23.75033,0 -43,19.24967 -43,43c0,30.71633 43,78.83333 43,78.83333c0,0 43,
+										-48.117 43,-78.83333c0,-23.75033 -19.24967,-43 -43,-43zM86,21.5c15.80967,0 28.66667,
+										12.857 28.66667,28.66667c0,14.405 -14.9135,38.41602 -28.68066,56.32552c-13.76717,
+										-17.88083 -28.65267,-41.87752 -28.65267,-56.32552c0,-15.80967 12.857,-28.66667 28.66667,
+										-28.66667zM86,35.83333c-7.91608,0 -14.33333,6.41725 -14.33333,14.33333c0,7.91608 6.41725,
+										14.33333 14.33333,14.33333c7.91608,0 14.33333,-6.41725 14.33333,-14.33333c0,-7.91608 -6.41725,
+										-14.33333 -14.33333,-14.33333zM34.4056,107.5l-20.07227,50.16667h143.33333l-20.07226,
+										-50.16667h-17.10482c-3.47583,5.23883 -6.96544,10.09067 -10.17611,14.33333h17.59473l8.5944,
+										21.5h-101.00521l8.5944,-21.5h17.59473c-3.21067,-4.24267 -6.70027,-9.0945 -10.17611,-14.33333z">
+									</path>
+								</g>
+							</g>
+						</svg>
+						<span class="ml-2">Offices</span>
+					</a>
+				</li>
 
-			<!-- CONTENIDO PRINCIPAL -->
-			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
-				<div class="my-5 my-md-3 py-4"></div>
-				<h1 class="h2">PANEL ADMIN</h1>
-				<p>Bienvenido</p>
-
-
-
-
-				
-				<!-- ------------------------- ASINCRONISMO NAV MAIM ------------------------- -->
-				<div class="row">
-
-					<!-- <div class="col">
-						<div class="tab-content" id="v-pills-tabContent">
-							<div class="tab-pane fade show active" id="v-pills-Orders" role="tabpanel"
-								aria-labelledby="v-pills-Orders-tab">
-								<div class="row">
-									<div class="col">
-										<div class="card">
-											<h5 class="card-header">Latest transactions</h5>
-											<div class="card-body">
-												<div class="table-responsive">
-													<table class="table">
-														<thead>
-															<tr>
-																<th scope="col">Order</th>
-																<th scope="col">Product</th>
-																<th scope="col">Customer</th>
-																<th scope="col">Total</th>
-																<th scope="col">Date</th>
-																<th scope="col"></th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<th scope="row">17371705</th>
-																<td>Volt Premium Bootstrap 5 Dashboard</td>
-																<td>johndoe@gmail.com</td>
-																<td>€61.11</td>
-																<td>Aug 31 2020</td>
-																<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-															</tr>
-															<tr>
-																<th scope="row">17370540</th>
-																<td>Pixel Pro Premium Bootstrap UI Kit</td>
-																<td>jacob.monroe@company.com</td>
-																<td>$153.11</td>
-																<td>Aug 28 2020</td>
-																<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-															</tr>
-															<tr>
-																<th scope="row">17371705</th>
-																<td>Volt Premium Bootstrap 5 Dashboard</td>
-																<td>johndoe@gmail.com</td>
-																<td>€61.11</td>
-																<td>Aug 31 2020</td>
-																<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-															</tr>
-															<tr>
-																<th scope="row">17370540</th>
-																<td>Pixel Pro Premium Bootstrap UI Kit</td>
-																<td>jacob.monroe@company.com</td>
-																<td>$153.11</td>
-																<td>Aug 28 2020</td>
-																<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-															</tr>
-															<tr>
-																<th scope="row">17371705</th>
-																<td>Volt Premium Bootstrap 5 Dashboard</td>
-																<td>johndoe@gmail.com</td>
-																<td>€61.11</td>
-																<td>Aug 31 2020</td>
-																<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-															</tr>
-															<tr>
-																<th scope="row">17370540</th>
-																<td>Pixel Pro Premium Bootstrap UI Kit</td>
-																<td>jacob.monroe@company.com</td>
-																<td>$153.11</td>
-																<td>Aug 28 2020</td>
-																<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-												<a href="#" class="btn btn-block btn-light">View all</a>
-											</div>
-										</div>
-									</div>
-
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="v-pills-Products" role="tabpanel" aria-labelledby="v-pills-Products-tab">
-								<div class="col-12 col-xl-4">
-									<div class="card">
-										<h5 class="card-header">Traffic last 6 months - Products</h5>
-										<div class="card-body">
-											<div id="traffic-chart"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%"
-													height="100%" class="ct-chart-line" style="width: 100%; height: 100%;">
-													<g class="ct-grids">
-														<line x1="50" x2="50" y1="15" y2="115" class="ct-grid ct-horizontal"></line>
-														<line x1="90.25" x2="90.25" y1="15" y2="115" class="ct-grid ct-horizontal"></line>
-														<line x1="130.5" x2="130.5" y1="15" y2="115" class="ct-grid ct-horizontal"></line>
-														<line x1="170.75" x2="170.75" y1="15" y2="115" class="ct-grid ct-horizontal"></line>
-														<line x1="211" x2="211" y1="15" y2="115" class="ct-grid ct-horizontal"></line>
-														<line x1="251.25" x2="251.25" y1="15" y2="115" class="ct-grid ct-horizontal"></line>
-														<line y1="115" y2="115" x1="50" x2="291.5" class="ct-grid ct-vertical"></line>
-														<line y1="86.42857142857143" y2="86.42857142857143" x1="50" x2="291.5"
-															class="ct-grid ct-vertical"></line>
-														<line y1="57.857142857142854" y2="57.857142857142854" x1="50" x2="291.5"
-															class="ct-grid ct-vertical"></line>
-														<line y1="29.285714285714292" y2="29.285714285714292" x1="50" x2="291.5"
-															class="ct-grid ct-vertical"></line>
-													</g>
-													<g>
-														<g class="ct-series ct-series-a">
-															<path
-																d="M50,115L50,82.143C63.417,81.19,76.833,79.286,90.25,79.286C103.667,79.286,117.083,87.857,130.5,87.857C143.917,87.857,157.333,74.923,170.75,66.429C184.167,57.934,197.583,40.587,211,35C224.417,29.413,237.833,27.381,251.25,23.571L251.25,115Z"
-																class="ct-area"></path>
-															<path
-																d="M50,82.143C63.417,81.19,76.833,79.286,90.25,79.286C103.667,79.286,117.083,87.857,130.5,87.857C143.917,87.857,157.333,74.923,170.75,66.429C184.167,57.934,197.583,40.587,211,35C224.417,29.413,237.833,27.381,251.25,23.571"
-																class="ct-line"></path>
-															<line x1="50" y1="82.14285714285714" x2="50.01" y2="82.14285714285714" class="ct-point"
-																ct:value="23000"></line>
-															<line x1="90.25" y1="79.28571428571428" x2="90.26" y2="79.28571428571428" class="ct-point"
-																ct:value="25000"></line>
-															<line x1="130.5" y1="87.85714285714286" x2="130.51" y2="87.85714285714286"
-																class="ct-point" ct:value="19000"></line>
-															<line x1="170.75" y1="66.42857142857143" x2="170.76" y2="66.42857142857143"
-																class="ct-point" ct:value="34000"></line>
-															<line x1="211" y1="35" x2="211.01" y2="35" class="ct-point" ct:value="56000"></line>
-															<line x1="251.25" y1="23.57142857142857" x2="251.26" y2="23.57142857142857"
-																class="ct-point" ct:value="64000"></line>
-														</g>
-													</g>
-													<g class="ct-labels">
-														<foreignObject style="overflow: visible;" x="50" y="120" width="40.25" height="20"><span
-																class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/"
-																style="width: 40px; height: 20px;">January</span></foreignObject>
-														<foreignObject style="overflow: visible;" x="90.25" y="120" width="40.25" height="20"><span
-																class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/"
-																style="width: 40px; height: 20px;">Februrary</span></foreignObject>
-														<foreignObject style="overflow: visible;" x="130.5" y="120" width="40.25" height="20"><span
-																class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/"
-																style="width: 40px; height: 20px;">March</span></foreignObject>
-														<foreignObject style="overflow: visible;" x="170.75" y="120" width="40.25" height="20"><span
-																class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/"
-																style="width: 40px; height: 20px;">April</span></foreignObject>
-														<foreignObject style="overflow: visible;" x="211" y="120" width="40.25" height="20"><span
-																class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/"
-																style="width: 40px; height: 20px;">May</span></foreignObject>
-														<foreignObject style="overflow: visible;" x="251.25" y="120" width="40.25" height="20"><span
-																class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/"
-																style="width: 40px; height: 20px;">June</span></foreignObject>
-														<foreignObject style="overflow: visible;" y="86.42857142857143" x="10"
-															height="28.571428571428573" width="30"><span class="ct-label ct-vertical ct-start"
-																xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">0</span>
-														</foreignObject>
-														<foreignObject style="overflow: visible;" y="57.85714285714286" x="10"
-															height="28.571428571428573" width="30"><span class="ct-label ct-vertical ct-start"
-																xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">20000</span>
-														</foreignObject>
-														<foreignObject style="overflow: visible;" y="29.285714285714292" x="10"
-															height="28.571428571428562" width="30"><span class="ct-label ct-vertical ct-start"
-																xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">40000</span>
-														</foreignObject>
-														<foreignObject style="overflow: visible;" y="-0.7142857142857082" x="10" height="30"
-															width="30">
-															<span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/"
-																style="height: 30px; width: 30px;">60000</span></foreignObject>
-													</g>
-												</svg></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="v-pills-Customers" role="tabpanel" aria-labelledby="v-pills-Customers-tab">
-								<section th:replace="layout/customers :: customers"></section>
-							</div>
-							<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-								<footer th:replace="layout/footer :: footer"></footer>
-							</div>
-						</div>
-					</div> -->
-				</div>
-
-				<!-- ------------------------- FIN ASINCRONISMO NAV MAIM ------------------------- -->
-
-				<!-- MAIN CONTAINER -->
-				<!-- <div class="row my-4">
-					<div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
-						<div class="card">
-							<h5 class="card-header">Customers</h5>
-							<div class="card-body">
-								<h5 class="card-title">345k</h5>
-								<p class="card-text">Feb 1 - Apr 1, United States</p>
-								<p class="card-text text-success">18.2% increase since last month</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-						<div class="card">
-							<h5 class="card-header">Revenue</h5>
-							<div class="card-body">
-								<h5 class="card-title">$2.4k</h5>
-								<p class="card-text">Feb 1 - Apr 1, United States</p>
-								<p class="card-text text-success">4.6% increase since last month</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-						<div class="card">
-							<h5 class="card-header">Purchases</h5>
-							<div class="card-body">
-								<h5 class="card-title">43</h5>
-								<p class="card-text">Feb 1 - Apr 1, United States</p>
-								<p class="card-text text-danger">2.6% decrease since last month</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
-						<div class="card">
-							<h5 class="card-header">Traffic</h5>
-							<div class="card-body">
-								<h5 class="card-title">64k</h5>
-								<p class="card-text">Feb 1 - Apr 1, United States</p>
-								<p class="card-text text-success">2.5% increase since last month</p>
-							</div>
-						</div>
-					</div>
-				</div> -->
-				<!-- <div class="row">
-					<div class="col-12 col-xl-8 mb-4 mb-lg-0">
-						<div class="card">
-							<h5 class="card-header">Latest transactions</h5>
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table">
-										<thead>
-											<tr>
-												<th scope="col">Order</th>
-												<th scope="col">Product</th>
-												<th scope="col">Customer</th>
-												<th scope="col">Total</th>
-												<th scope="col">Date</th>
-												<th scope="col"></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<th scope="row">17371705</th>
-												<td>Volt Premium Bootstrap 5 Dashboard</td>
-												<td>johndoe@gmail.com</td>
-												<td>€61.11</td>
-												<td>Aug 31 2020</td>
-												<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-											</tr>
-											<tr>
-												<th scope="row">17370540</th>
-												<td>Pixel Pro Premium Bootstrap UI Kit</td>
-												<td>jacob.monroe@company.com</td>
-												<td>$153.11</td>
-												<td>Aug 28 2020</td>
-												<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-											</tr>
-											<tr>
-												<th scope="row">17371705</th>
-												<td>Volt Premium Bootstrap 5 Dashboard</td>
-												<td>johndoe@gmail.com</td>
-												<td>€61.11</td>
-												<td>Aug 31 2020</td>
-												<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-											</tr>
-											<tr>
-												<th scope="row">17370540</th>
-												<td>Pixel Pro Premium Bootstrap UI Kit</td>
-												<td>jacob.monroe@company.com</td>
-												<td>$153.11</td>
-												<td>Aug 28 2020</td>
-												<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-											</tr>
-											<tr>
-												<th scope="row">17371705</th>
-												<td>Volt Premium Bootstrap 5 Dashboard</td>
-												<td>johndoe@gmail.com</td>
-												<td>€61.11</td>
-												<td>Aug 31 2020</td>
-												<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-											</tr>
-											<tr>
-												<th scope="row">17370540</th>
-												<td>Pixel Pro Premium Bootstrap UI Kit</td>
-												<td>jacob.monroe@company.com</td>
-												<td>$153.11</td>
-												<td>Aug 28 2020</td>
-												<td><a href="#" class="btn btn-sm btn-primary">View</a></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<a href="#" class="btn btn-block btn-light">View all</a>
-							</div>
-						</div>
-					</div>
-
-				</div> -->
-
-			</main>
-
+			</ul>
+			<!-- FIN MENU NAV-->
 		</div>
+	</nav>
+	<!-- ---------------- FIN NAV MENU LATERAL IZQUIERDO ----------------- -->
 
-
-		<!-- MODIFICAR LUEGO -->
-		<!-- <div class="row">
-			<section class="productos">
-				<div class="container-fluid">
-					<h5 style="display: inline">Productos</h5>
-					<div class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;" th:each="p, i : ${products}" th:unless="${i.index > 6}">
-							<div class="card h-100 box__card">
-								<span th:text="${p.name}"></span>
-								<div class="card-body">
-									<p class="card-text">
-										$ <span th:text="${#numbers.formatDecimal(p.buyPrice, 0, 'COMMA', 2, 'POINT')}">10.00</span>
-									</p>
-								</div>
-							</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-		
-		<div class="row">
-			<section class="productos">
-				<div class="container-fluid">
-					<h5 style="display: inline">Clientes</h5>
-					<div class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;"
-							th:each="c, i : ${customers}" th:unless="${i.index > 6}">
-							<div class="card h-100 box__card">
-								<span th:text="${c.name}"></span>
-							</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-		
-		<div class="row">
-			<section class="productos">
-				<div class="container-fluid">
-					<h5 style="display: inline">Empleados</h5>
-					<div class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;"
-							th:each="e, i : ${employees}" th:unless="${i.index > 6}">
-							<div class="card h-100 box__card">
-								<span th:text="${e.firstName}"></span>
-							</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-		
-		<div class="row">
-			<section class="productos">
-				<div class="container-fluid">
-					<h5 style="display: inline">Oficinas</h5>
-					<div class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;"
-							th:each="o, i : ${offices}" th:unless="${i.index > 6}">
-							<div class="card h-100 box__card">
-								<span th:text="${o.phone}"></span>
-							</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-		
-		<div class="row">
-			<section class="productos">
-				<div class="container-fluid">
-					<h5 style="display: inline">Ordenes(Nombre Cliente)</h5>
-					<div class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;"
-							th:each="o, i : ${orders}" th:unless="${i.index > 6}">
-							<div class="card h-100 box__card">
-								<span th:text="${o.customer.contactFirstName}"></span>
-							</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-		
-		<div class="row">
-			<section class="productos">
-				<div class="container-fluid">
-					<h5 style="display: inline">Pagos(Nombre Cliente)</h5>
-					<div class="row col-lg-12">
-						<div class="col-md-3" style="padding-bottom: 16px;"
-							th:each="p, i : ${payments}" th:unless="${i.index > 6}">
-							<div class="card h-100 box__card">
-								<span th:text="${p.customer.contactFirstName}"></span>
-							</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div> -->
-		
-	</div>
-	<!-- FIN CONTENIDO PRINCIPAL -->
-
-	<!-- FOOTER -->
-	<!-- <footer th:replace="layout/footer :: footer"></footer> -->
-	<!-- FIN FOOTER -->
 </body>
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
 </html>

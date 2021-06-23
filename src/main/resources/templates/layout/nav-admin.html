@@ -11,6 +11,7 @@
 <body>
   <header th:fragment="nav-admin" class="nav-admin fixed-top">
     <!-- background-color: #030848!important; -->
+    <!-- background-color: #3b3098!important; -->
     <!-- background-color: #32297c!important; -->
     <!-- background-color: #6b74f9!important; -->
     <!-- background-color: #776bdf!important; -->
@@ -55,7 +56,12 @@
           <!-- FIN BARRA DE BUSQUEDA -->
           <div class="dropdown mx-3">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-expanded="false">Options</button>
+              aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="24" height="24"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v50.16667v50.16667c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-100.33333c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM35.83333,35.83333h100.33333v100.33333h-100.33333v-43h57.33333v14.33333l21.5,-21.5l-21.5,-21.5v14.33333h-57.33333z"></path></g></g></svg>
+            </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><a class="dropdown-item" th:href="@{/signin}">Log Out</a></li>

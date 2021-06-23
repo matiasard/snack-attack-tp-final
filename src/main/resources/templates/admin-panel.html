@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+	<link rel="stylesheet" th:href="@{/css/header.css}">
+	<link rel="stylesheet" th:href="@{/css/footer.css}">
+</head>
+
+<body>
+	<!-- NAV SUPERIOR -->
+	<div th:replace="layout/nav-admin :: nav-admin"></div>
+	<!-- FIN NAV SUPERIOR -->
+
+	<!-- CONTENIDO PRINCIPAL -->
+	<div class="container-fluid">
+		<div class="row">
+		<!-------------------  NAV MENU LATERAL IZQUIERDO ----------------- -->
+		<div th:replace="layout/nav-admin-left :: nav-admin-left"></div>
+		<!-- ------------- FIN NAV MENU LATERAL IZQUIERDO ---------------- -->
+
+			<!-- CONTENIDO PRINCIPAL -->
+			<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+				
+				<!-- Título de la página de inicio -->
+				<div class="page-title-box">
+					<div class="container-fluid ">
+						<div class="row align-items-center">
+							<div class="col-sm-6">
+								<div class="page-title">
+									<h2 class="text-white pt-5 pt-md-0">PANEL ADMIN</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- FIN Título de la página de inicio -->
+
+				<!-- Contenido -->
+				<h1>1</h1>
+				
+				<div class="row">
+					<h1>2</h1>
+				</div>
+
+
+			</main>
+
+		</div>
+
+
+		<!-- MODIFICAR LUEGO -->
+		<!-- <div class="row">
+			<section class="productos">
+				<div class="container-fluid">
+					<h5 style="display: inline">Productos</h5>
+					<div class="row col-lg-12">
+						<div class="col-md-3" style="padding-bottom: 16px;" th:each="p, i : ${products}" th:unless="${i.index > 6}">
+							<div class="card h-100 box__card">
+								<span th:text="${p.name}"></span>
+								<div class="card-body">
+									<p class="card-text">
+										$ <span th:text="${#numbers.formatDecimal(p.buyPrice, 0, 'COMMA', 2, 'POINT')}">10.00</span>
+									</p>
+								</div>
+							</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		
+		<div class="row">
+			<section class="productos">
+				<div class="container-fluid">
+					<h5 style="display: inline">Clientes</h5>
+					<div class="row col-lg-12">
+						<div class="col-md-3" style="padding-bottom: 16px;"
+							th:each="c, i : ${customers}" th:unless="${i.index > 6}">
+							<div class="card h-100 box__card">
+								<span th:text="${c.name}"></span>
+							</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		
+		<div class="row">
+			<section class="productos">
+				<div class="container-fluid">
+					<h5 style="display: inline">Empleados</h5>
+					<div class="row col-lg-12">
+						<div class="col-md-3" style="padding-bottom: 16px;"
+							th:each="e, i : ${employees}" th:unless="${i.index > 6}">
+							<div class="card h-100 box__card">
+								<span th:text="${e.firstName}"></span>
+							</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		
+		<div class="row">
+			<section class="productos">
+				<div class="container-fluid">
+					<h5 style="display: inline">Oficinas</h5>
+					<div class="row col-lg-12">
+						<div class="col-md-3" style="padding-bottom: 16px;"
+							th:each="o, i : ${offices}" th:unless="${i.index > 6}">
+							<div class="card h-100 box__card">
+								<span th:text="${o.phone}"></span>
+							</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		
+		<div class="row">
+			<section class="productos">
+				<div class="container-fluid">
+					<h5 style="display: inline">Ordenes(Nombre Cliente)</h5>
+					<div class="row col-lg-12">
+						<div class="col-md-3" style="padding-bottom: 16px;"
+							th:each="o, i : ${orders}" th:unless="${i.index > 6}">
+							<div class="card h-100 box__card">
+								<span th:text="${o.customer.contactFirstName}"></span>
+							</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		
+		<div class="row">
+			<section class="productos">
+				<div class="container-fluid">
+					<h5 style="display: inline">Pagos(Nombre Cliente)</h5>
+					<div class="row col-lg-12">
+						<div class="col-md-3" style="padding-bottom: 16px;"
+							th:each="p, i : ${payments}" th:unless="${i.index > 6}">
+							<div class="card h-100 box__card">
+								<span th:text="${p.customer.contactFirstName}"></span>
+							</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div> -->
+		
+	</div>
+	<!-- FIN CONTENIDO -->
+
+</body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</html>
