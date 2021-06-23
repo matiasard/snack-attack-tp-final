@@ -34,11 +34,14 @@ public class HomeController {
 		return "category";
 	}
 
+	@GetMapping("/terms-and-conditions")
+	public String getTermsAndConditionsPage() {
+		return "terms-and-conditions";
+	}
 
 	@GetMapping("/admin")
-	public String getAdminPanel(){
+	public String getAdminPanel() {
 		return "admin-panel";
-    main
 	}
 
 }
