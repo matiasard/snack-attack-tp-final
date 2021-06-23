@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import ar.edu.unju.fi.service.IProductLinesService;
 
-
 /**
  * @author Enzo Sandoval
  *
@@ -33,6 +32,11 @@ public class HomeController {
 		model.addAttribute("categoria", productLinesService.buscarLineaDeProducto(id));
 		model.addAttribute("productos", productLinesService.buscarLineaDeProducto(id).getProductos());
 		return "category";
+	}
+
+	@GetMapping("/terms-and-conditions")
+	public String getTermsAndConditionsPage(Model model) throws Exception {
+		return "terms-and-conditions";
 	}
 
 }
