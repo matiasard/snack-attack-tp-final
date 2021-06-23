@@ -127,7 +127,7 @@ body {
 	animation: animated 4s linear infinite;
 }
 
-@
+/* @
 keyframes animated { 0%, 100% {
 	transform: translateY(8px);
 }
@@ -141,7 +141,7 @@ translateY(
 -8px
 );
 }
-}
+} */
 .home-img .circle {
 	position: absolute;
 	z-index: 1;
@@ -167,7 +167,7 @@ translateY(
 	animation: spin 10s linear infinite;
 }
 
-@
+/* @
 keyframes spin { 0% {
 	transform: rotate(0deg);
 }
@@ -181,7 +181,7 @@ rotate(
 360deg
 );
 }
-}
+} */
 
 .banner-gallery{
 	background-image: url(../img/bannerPrincipal/banner-gallery.jpg);

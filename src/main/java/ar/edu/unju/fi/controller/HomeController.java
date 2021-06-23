@@ -35,4 +35,9 @@ public class HomeController {
 		return "category";
 	}
 
+	@GetMapping("/admin")
+	public String getAdminPanel(){
+		return "admin-panel";
+	}
+
 }
