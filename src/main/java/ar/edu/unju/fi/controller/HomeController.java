@@ -34,9 +34,11 @@ public class HomeController {
 		return "category";
 	}
 
-	@GetMapping("/terms-and-conditions")
-	public String getTermsAndConditionsPage(Model model) throws Exception {
-		return "terms-and-conditions";
+
+	@GetMapping("/admin")
+	public String getAdminPanel(){
+		return "admin-panel";
+    main
 	}
 
 }
