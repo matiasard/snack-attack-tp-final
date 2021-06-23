@@ -48,7 +48,7 @@ public class CustomerController {
 		model.addAttribute("next", page + 2);
 		model.addAttribute("prev", page);
 		model.addAttribute("last", totalPage);
-		return "customer-crud";
+		return "customers";
 	}
 
 }
