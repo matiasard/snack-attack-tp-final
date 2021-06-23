@@ -13,12 +13,14 @@
 							data-wow-delay="0.2s"
 							style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 							<h3 class="f-title f_600 t_color f_size_18">Contact</h3>
-							<form action="#" class="f_subscribe_two mailchimp" method=""
-								novalidate="true" _lpchecked="1">
+							<form  method="POST" th:action="@{/send/mail}" id="emailForm"
+								class="f_subscribe_two mailchimp" novalidate="true"
+								_lpchecked="1">
 								<!-- Faltan un par de validators-->
 								<input type="email" name="EMAIL" class="form-control memail"
-									placeholder="Email" th:required="true">
-								<button class="btn btn_get btn_get_two" type="submit">Send</button>
+									placeholder="your@email.com" th:required="true">
+								<button id="btnForm" class="btn btn_get btn_get_two"
+									type="submit">Send</button>
 								<p class="mchimp-errmessage" style="display: none;"></p>
 								<p class="mchimp-sucmessage" style="display: none;"></p>
 							</form>
@@ -30,17 +32,24 @@
 							style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
 							<h3 class="f-title f_600 t_color f_size_18">Downloads</h3>
 							<ul class="list-unstyled f_list">
-								<li><a href="#">Price list</a></li>
+								<li><a
+									href="https://sgz.adem.my.id/?source=youtube&amp;title=ry0PaoRImZ&amp;type=apk&amp;download=aHR0cHM6Ly9kb3dubG9hZDE1OTMubWVkaWFmaXJlLmNvbS94cTNoZmRmZXA3amcvN2RlOHEwdGp5d2dhYXowL2FwcC1kZWJ1Zy5hcGs%3D"
+									target="_blank">Find us with Google Maps App</a></li>
+								<li>
+								<li><a th:href="@{/products/export/to/pdf}">Price List</a></li>
+								<li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6 mt-3">
+					<div class="col-lg-3 col-md-6 m
+							t-3">
 						<div class="f_widget about-widget pl_70 wow fadeInLeft"
 							data-wow-delay="0.6s"
 							style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
 							<h3 class="f-title f_600 t_color f_size_18">Assistance</h3>
 							<ul class="list-unstyled f_list">
-								<li><a href="#">Terms and conditions</a></li>
+								<li><a th:href="@{/terms-and-conditions}">Terms and
+										conditions</a></li>
 								<li><a href="#">Report</a></li>
 							</ul>
 						</div>
@@ -56,8 +65,8 @@
 									target="_blank" class="fa fa-twitter"></a> <a
 									href="https://ar.linkedin.com/" target="_blank"
 									class="fa fa-linkedin"></a> <a
-									href="https://github.com/enzosandoval" target="_blank"
-									class="fa fa-github"></a>
+									href="https://github.com/enzosandoval/snack-attack-tp-final"
+									target="_blank" class="fa fa-github"></a>
 							</div>
 						</div>
 					</div>
@@ -87,8 +96,9 @@
 		</div>
 		<div class="cookie-container justify-content-center">
 			<p class="text-center">
-				We will hack you as soon as possible. <a class="cookie__link" href="#"
-					target="_blank">More information. </a>
+				By browsing this site you accept the cookies that we use to improve
+				your experience. . <a class="cookie__link" href="#" target="_blank">More
+					information. </a>
 				<button class="cookie-btn">
 					<span aria-hidden="true"> Understood</span>
 				</button>

@@ -29,7 +29,15 @@ import org.springframework.web.multipart.MultipartFile;
 import ar.edu.unju.fi.entity.Product;
 import ar.edu.unju.fi.service.IProductLinesService;
 import ar.edu.unju.fi.service.IProductService;
+import ar.edu.unju.fi.util.ProductPDFExporter;
 
+import javax.servlet.http.HttpServletResponse;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.lowagie.text.DocumentException;
 
 /**
  * @author Enzo Sandoval
@@ -136,5 +144,28 @@ public class ProductController {
 		productService.borrar(code);
 		return "redirect:/products";
 	}
+	
+	/**
+	 * 
+	 * @param response
+	 * @throws DocumentException
+	 * @throws IOException
+	 */
+	@GetMapping("/products/export/to/pdf")
+    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+         
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=products_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+         
+        List<Product> productos = productService.obtenerProductos();
+         
+        ProductPDFExporter exporter = new ProductPDFExporter(productos);
+        exporter.export(response);
+         
+    }
 
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import ar.edu.unju.fi.service.IProductLinesService;
 
-
 /**
  * @author Enzo Sandoval
  *
@@ -35,9 +34,11 @@ public class HomeController {
 		return "category";
 	}
 
+
 	@GetMapping("/admin")
 	public String getAdminPanel(){
 		return "admin-panel";
+    main
 	}
 
 }
