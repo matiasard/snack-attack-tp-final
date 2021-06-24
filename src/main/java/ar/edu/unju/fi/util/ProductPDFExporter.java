@@ -17,6 +17,7 @@ import java.util.Base64;
 
 /**
  * @author Enzo Sandoval
+ * @author https://www.codejava.net/frameworks/spring-boot/pdf-export-example
  *
  */
 public class ProductPDFExporter {

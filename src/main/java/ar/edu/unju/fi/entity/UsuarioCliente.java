@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("cliente")
 public class UsuarioCliente extends Usuario {
 
-	@OneToOne(mappedBy = "usuarioCliente", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "usuarioCliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Customer customer;
 
 	public UsuarioCliente() {
