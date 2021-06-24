@@ -3,83 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Customers</title>
+<title>Offices</title>
 <link rel="stylesheet"
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/styles.css}">
 <link rel="stylesheet" th:href="@{/css/header.css}">
 <link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/tables.css}">
 <link rel="stylesheet"
-	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}"></link>
 </head>
-<!-- style="background-color: #f5f7fa;" -->
 <body>
 	<!-- <div th:replace="layout/header :: header"></div> -->
-	<div th:replace="layout/nav-admin :: nav-admin"></div>
 	<!-- style="text-align: justify;" -->
+	<div th:replace="layout/nav-admin :: nav-admin"></div>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12" style="height: 30px;"></div>
 			<div th:replace="layout/nav-admin-left :: nav-admin-left"></div>
-			<div class="col-md-9 ml-sm-auto col-lg-10 py-4">
+			<div class="col-md-9 ml-sm-auto col-lg-10">
+				<div class="col-xs-12" style="height: 20px;"></div>
 				<!-- Título de la página de inicio -->
 				<div class="page-title-box">
 					<div class="container-fluid ">
 						<div class="row align-items-center">
 							<div class="col-sm-6">
 								<div class="page-title">
-									<h2 class="text-white pt-5 pt-md-0">CUSTOMERS</h2>
+									<h2 class="text-white pt-5 pt-md-0">OFFICES</h2>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row mx-2 rounded bg-white shadow page-content__wrapper">
-					<a th:href="@{/customer/new}" class="btn btn-success ml-3 mt-3"
-						id="delRef"> Add Customer <i class="fa fa-plus"></i></a>
+				<!-- FIN Título de la página de inicio -->
+				<div
+					class="row mx-2 mb-4 rounded bg-white shadow page-content__wrapper">
+					<a th:href="@{/office/new}" class="btn btn-success ml-3 mt-3"
+						id="addRef">Add Office <i class="fa fa-plus"></i>
+					</a>
 					<div class="col-12" style="overflow-x: auto;">
 						<table class="table table-hover content_table">
 							<thead>
-								<tr class="">
-									<th style="width: 6%">Number</th>
-									<th>Name</th>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Phone</th>
+								<tr class="text-center">
+									<th style="width: 6%">Code</th>
+									<th style="width: 24%">City</th>
+									<th>Country</th>
 									<th>Address</th>
+									<th>Phone</th>
 									<th>Postal Code</th>
 									<th style="width: 9%">Edit</th>
 									<th style="width: 10%">Delete</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="customer : ${customers}">
-									<td th:text="${customer.number}"></td>
-									<td th:text="${customer.name}"></td>
-									<td th:text="${customer.contactFirstName}"></td>
-									<td th:text="${customer.contactLastName}"></td>
-									<td th:text="${customer.phone}"></td>
-									<td th:text="${customer.addressLine1}"></td>
-									<td th:text="${customer.postalCode}"></td>
+								<tr th:each="office : ${offices}" class="text-center">
+									<td th:text="${office.code}"></td>
+									<td th:text="${office.city}"></td>
+									<td th:text="${office.country}"></td>
+									<td
+										th:text="${office.addressLine1}"></td>
+									<td th:text="${office.phone}"></td>
+									<td th:text="${office.postalCode}"></td>
 									<td><a
-										th:href="@{/customer/edit/{id}(id=${customer.number})}"
+										th:href="@{/office/edit/{code}(code=${office.code})}"
 										class="btn btn-warning">Edit <i class="fa fa-edit"></i></a></td>
 									<td><a data-toggle="modal"
-										data-target="#removeCustomerModal"
-										class="btn btn-danger delBtn"
-										th:attr="data-target='#removeCustomerModal'+${customer.number}">Delete
+										data-target="#removeOfficeModal" class="btn btn-danger delBtn"
+										th:attr="data-target='#removeOfficeModal'+${office.code}">Delete
 											<i class="fa fa-trash"></i>
-									</a> <!-- #Modal for removing Producto -->
+									</a>
 										<div class="modal fade"
-											th:id="removeCustomerModal+${customer.number}"
-											id="removeCustomerModal" tabindex="-1" role="dialog"
+											th:id="removeOfficeModal+${office.code}"
+											id="removeOfficeModal" tabindex="-1" role="dialog"
 											aria-labelledby="removeModalCenterTitle" aria-hidden="true">
 											<div class="modal-dialog modal-dialog-centered"
 												role="document">
 												<div class="modal-content">
 													<div class="modal-header">
 														<h4 class="modal-title" id="removeModalCenterTitle">Delete
-															Customer</h4>
+															Office</h4>
 														<button type="button" class="close" data-dismiss="modal"
 															aria-label="Close">
 															<span aria-hidden="true">&times;</span>
@@ -88,13 +89,12 @@
 													<div class="modal-body">
 														<p class="alert alert-danger">
 															Are you sure want to delete <span
-																th:text="${customer.name}"></span>?
+																th:text="${office.code}"></span>?
 														</p>
 													</div>
 													<div class="modal-footer">
-														<a
-															th:href="@{/customer/delete/{id}(id=${customer.number})}"
-															class="btn btn-danger" id="delRef">Accept</a>
+														<a th:href="@{/office/delete/{code}(code=${office.code})}"
+															class="btn btn-danger" id="delRef">Delete</a>
 														<button type="button" class="btn btn-secondary"
 															data-dismiss="modal">Cancel</button>
 													</div>
@@ -109,19 +109,17 @@
 							<div class="col-md-2"></div>
 							<div class="col-md-8">
 								<nav aria-label="Pagination">
-									<ul class="pagination justify-content-center d-flex flex-wrap">
+									<ul class="pagination justify-content-center">
 										<li class="page-item"
 											th:classappend="${prev == 0 ? 'disabled': ''}"><a
-											class="page-link" th:href="@{|/customers/?page=${prev}|}">Previous</a>
-										</li>
+											class="page-link" th:href="@{|/products/?page=${prev}|}">Previous</a></li>
 										<li class="page-item" th:each="page : ${pages}"
 											th:classappend="${current == page ? 'active': ''}"><a
-											class="page-link" th:href="@{|/customers/?page=${page}|}"
+											class="page-link" th:href="@{|/products/?page=${page}|}"
 											th:text="${page}"></a></li>
 										<li class="page-item"
 											th:classappend="${current == last ? 'disabled': ''}"><a
-											class="page-link" th:href="@{|/customers/?page=${next}|}">Next</a>
-										</li>
+											class="page-link" th:href="@{|/products/?page=${next}|}">Next</a></li>
 									</ul>
 								</nav>
 							</div>

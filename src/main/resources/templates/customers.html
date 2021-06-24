@@ -10,7 +10,6 @@
 	<link rel="stylesheet" th:href="@{/css/header.css}">
 	<link rel="stylesheet" th:href="@{/css/footer.css}">
 	<link rel="stylesheet" th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
-	</link>
 </head>
 <!-- style="background-color: #f5f7fa;" -->
 
@@ -108,7 +107,7 @@
 											<a class="page-link" th:href="@{|/customers/?page=${page}|}" th:text="${page}"></a>
 										</li>
 										<li class="page-item" th:classappend="${current == last ? 'disabled': ''}">
-											<a class="page-link" th:href="@{|/customerss/?page=${next}|}">Next</a>
+											<a class="page-link" th:href="@{|/customers/?page=${next}|}">Next</a>
 										</li>
 									</ul>
 								</nav>

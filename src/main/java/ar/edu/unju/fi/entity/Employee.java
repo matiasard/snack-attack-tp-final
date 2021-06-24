@@ -3,6 +3,7 @@
  */
 package ar.edu.unju.fi.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,11 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -28,8 +31,7 @@ import org.springframework.stereotype.Component;
 public class Employee {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Length(max = 11)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "employeeNumber", unique = true, nullable = false, updatable = false)
 	private Long number;
 
@@ -67,6 +69,11 @@ public class Employee {
 	@JoinColumn(name = "officeCode")
 	private Office office;
 
+	@Autowired
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userNumber")
+	private UsuarioCliente usuarioEmpleado;
+
 	public Employee() {
 	}
 
@@ -76,7 +83,7 @@ public class Employee {
 	public Long getNumber() {
 		return number;
 	}
-	
+
 	/**
 	 * @param number the number to set
 	 */
@@ -182,11 +189,25 @@ public class Employee {
 		this.office = office;
 	}
 
+	/**
+	 * @return the usuarioEmpleado
+	 */
+	public UsuarioCliente getUsuarioEmpleado() {
+		return usuarioEmpleado;
+	}
+
+	/**
+	 * @param usuarioEmpleado the usuarioEmpleado to set
+	 */
+	public void setUsuarioEmpleado(UsuarioCliente usuarioEmpleado) {
+		this.usuarioEmpleado = usuarioEmpleado;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [number=" + number + ", firstName=" + firstName + ", lastName=" + lastName + ", extension="
 				+ extension + ", email=" + email + ", jobTitle=" + jobTitle + ", reportsTo=" + reportsTo + ", office="
-				+ office + "]";
+				+ office + ", usuarioEmpleado=" + usuarioEmpleado + "]";
 	}
 
 }

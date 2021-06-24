@@ -122,15 +122,18 @@ public class ProductController {
 					MediaType.APPLICATION_JSON_VALUE })
 	public String getSaveProductRedirect(@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("product") Product product, BindingResult result, Model model) throws IOException {
-		System.out.println("Codigo: " + product.getId());
 		if (!file.isEmpty()) {
 			byte[] content = file.getBytes();
 			String base64 = Base64.getEncoder().encodeToString(content);
 			product.setImage(base64);
 		}
-		System.out.println("Codigo: " + product.getId());
-		productService.guardar(product);
-		return "redirect:/products";
+		if (result.hasErrors()) {
+			model.addAttribute("product", product);
+			return "product-edit";
+		} else {
+			productService.guardar(product);
+			return "redirect:/products";
+		}
 
 	}
 
@@ -144,7 +147,7 @@ public class ProductController {
 		productService.borrar(code);
 		return "redirect:/products";
 	}
-	
+
 	/**
 	 * 
 	 * @param response
@@ -152,20 +155,20 @@ public class ProductController {
 	 * @throws IOException
 	 */
 	@GetMapping("/products/export/to/pdf")
-    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
-        response.setContentType("application/pdf");
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-        String currentDateTime = dateFormatter.format(new Date());
-         
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=products_" + currentDateTime + ".pdf";
-        response.setHeader(headerKey, headerValue);
-         
-        List<Product> productos = productService.obtenerProductos();
-         
-        ProductPDFExporter exporter = new ProductPDFExporter(productos);
-        exporter.export(response);
-         
-    }
+	public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("application/pdf");
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		String currentDateTime = dateFormatter.format(new Date());
+
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=products_" + currentDateTime + ".pdf";
+		response.setHeader(headerKey, headerValue);
+
+		List<Product> productos = productService.obtenerProductos();
+
+		ProductPDFExporter exporter = new ProductPDFExporter(productos);
+		exporter.export(response);
+
+	}
 
 }

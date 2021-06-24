@@ -25,9 +25,8 @@ import org.springframework.stereotype.Component;
 public class Office {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Length(max = 10)
-	@Column(name = "officeCode", unique = true, nullable = false, updatable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "officeCode", nullable = false, updatable = false)
 	private Long code;
 
 	@NotEmpty(message="The Phone Number must not be null nor empty.")
@@ -41,7 +40,7 @@ public class Office {
 	private String addressLine1;
 
 	@Length(max = 50)
-	@Column(name = "addressLine2", nullable = false, length = 50)
+	@Column(name = "addressLine2", length = 50)
 	private String addressLine2;
 
 	@NotEmpty(message="The field City must not be null nor empty.")
@@ -53,7 +52,7 @@ public class Office {
 	@Length(min=2, max = 50, message="The field Country must be at least two characters.")
 	@Column(name = "country", nullable = false, length = 50)
 	private String country;
-	
+
 	@Length(min=2, max = 50, message="The field Country can have at least two characters .")
 	@Column(name = "state", nullable = false, length = 50)
 	private String state;
