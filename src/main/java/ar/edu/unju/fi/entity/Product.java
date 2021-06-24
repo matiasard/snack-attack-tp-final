@@ -35,8 +35,8 @@ import org.springframework.stereotype.Component;
 public class Product {
 
 	@Id
-	//@GeneratedValue(generator = "system-uuid")
-	//@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	@Column(name = "productCode")
 	private String id;
 

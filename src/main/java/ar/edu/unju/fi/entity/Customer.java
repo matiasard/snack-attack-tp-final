@@ -5,6 +5,7 @@ package ar.edu.unju.fi.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.DecimalMax;
+import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -31,33 +33,33 @@ import org.springframework.stereotype.Component;
 public class Customer {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "customerNumber", unique = true, nullable = false, updatable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)	
+	@Column(name = "customerNumber", nullable = false, updatable = false)
 	private Long number;
 
-	@NotEmpty(message="The Customer Name must not be null nor empty.")
-	@Length(min=2, max = 50, message="Customer Name must be at least two characters.")
+	@NotEmpty(message = "The Customer Name must not be null nor empty.")
+	@Length(min = 2, max = 50, message = "Customer Name must be at least two characters.")
 	@Column(name = "customerName", nullable = false, length = 50)
 	private String name;
 
-	@NotBlank(message="The Contact First Name must not be null nor must contain  one whitespace character.")
-	@Length(min=2, max = 50, message="Contact First Name must be at least two characters.")
+	@NotBlank(message = "The Contact First Name must not be null nor must contain  one whitespace character.")
+	@Length(min = 2, max = 50, message = "Contact First Name must be at least two characters.")
 	@Column(nullable = false, length = 50)
 	private String contactFirstName;
 
-	@NotEmpty(message="The Contact Last Name must not be null nor empty.")
-	@Length(min=1, max = 50, message="Contact First Name must be at least one character.")
+	@NotEmpty(message = "The Contact Last Name must not be null nor empty.")
+	@Length(min = 1, max = 50, message = "Contact First Name must be at least one character.")
 	@Column(nullable = false, length = 50)
 	private String contactLastName;
 
-	//la bd acepta espacio en blanco
-	@NotEmpty(message="The Phone Number must not be null nor empty.")
-	@Length(min=6, max = 50, message="The Phone Number must be at least six characters.")
+	// la bd acepta espacio en blanco
+	@NotEmpty(message = "The Phone Number must not be null nor empty.")
+	@Length(min = 6, max = 50, message = "The Phone Number must be at least six characters.")
 	@Column(nullable = false, length = 50)
 	private String phone;
 
-	@NotEmpty(message="The Address Line 1 must not be null nor empty.")
-	@Length(min=3, max = 50, message="The Address Line 1 must be at least three characters.")
+	@NotEmpty(message = "The Address Line 1 must not be null nor empty.")
+	@Length(min = 3, max = 50, message = "The Address Line 1 must be at least three characters.")
 	@Column(name = "addressLine1", nullable = false, length = 50)
 	private String addressLine1;
 
@@ -65,8 +67,8 @@ public class Customer {
 	@Column(name = "addressLine2", nullable = false, length = 50)
 	private String addressLine2;
 
-	@NotEmpty(message="The field City must not be null nor empty.")
-	@Length(min=2, max = 50, message="The field City must be at least two characters.")
+	@NotEmpty(message = "The field City must not be null nor empty.")
+	@Length(min = 2, max = 50, message = "The field City must be at least two characters.")
 	@Column(name = "city", nullable = false, length = 50)
 	private String city;
 
@@ -78,18 +80,23 @@ public class Customer {
 	@Column(name = "postalCode", nullable = false, length = 15)
 	private String postalCode;
 
-	@NotEmpty(message="The field Country must not be null nor empty.")
-	@Length(min=2, max = 50, message="The field Country must be at least two characters. ")
+	@NotEmpty(message = "The field Country must not be null nor empty.")
+	@Length(min = 2, max = 50, message = "The field Country must be at least two characters. ")
 	@Column(name = "country", nullable = false, length = 50)
 	private String country;
 
-	@Digits(integer=8, fraction = 2, message="The credit limit must be a number whose value must be less than or equal to 99999999.99." )
+	@Digits(integer = 8, fraction = 2, message = "The credit limit must be a number whose value must be less than or equal to 99999999.99.")
 	@Column(nullable = false, length = 50)
 	private BigDecimal creditLimit;
 
 	@ManyToOne
 	@JoinColumn(name = "salesRepEmployeeNumber")
 	private Employee salesRepresentative;
+
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "userNumber")
+	private UsuarioCliente usuarioCliente;
 
 	public Customer() {
 	}
@@ -100,7 +107,7 @@ public class Customer {
 	public Long getNumber() {
 		return number;
 	}
-	
+
 	/**
 	 * @param number the number to set
 	 */
@@ -276,13 +283,27 @@ public class Customer {
 		this.salesRepresentative = salesRepresentative;
 	}
 
+	/**
+	 * @return the usuarioCliente
+	 */
+	public UsuarioCliente getUsuarioCliente() {
+		return usuarioCliente;
+	}
+
+	/**
+	 * @param usuarioCliente the usuarioCliente to set
+	 */
+	public void setUsuarioCliente(UsuarioCliente usuarioCliente) {
+		this.usuarioCliente = usuarioCliente;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [number=" + number + ", name=" + name + ", contactFirstName=" + contactFirstName
 				+ ", contactLastName=" + contactLastName + ", phone=" + phone + ", addressLine1=" + addressLine1
 				+ ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", postalCode="
 				+ postalCode + ", country=" + country + ", creditLimit=" + creditLimit + ", salesRepresentative="
-				+ salesRepresentative +  "]";
+				+ salesRepresentative + ", usuarioCliente=" + usuarioCliente + "]";
 	}
 
 }

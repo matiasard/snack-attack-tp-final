@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Office</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/forms.css}">
+</head>
+<body>
+	<!-- <div th:replace="layout/header :: header"></div> -->
+	<div th:replace="layout/nav-admin :: nav-admin"></div>
+	<div>
+		<section class="my-form">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="card-wrapper col-md-6 col-sm-8">
+						<div class="card fat">
+							<div class="card-body">
+								<h1 th:if="${office.code == null}" class="text-center">New
+									Office</h1>
+								<h1 th:if="${office.code != null}" class="text-center">Edit
+									Office</h1>
+								<br>
+								<form th:action="@{/office/save}" th:object="${office}"
+									method="POST">
+									<input type="hidden" th:field="*{code}" />
+									<div class="form-group">
+										<label for="phone">Phone</label>
+										<input type="text" class="form-control" id="phone"
+											placeholder="Phone" th:field="*{phone}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+									</div>
+									<div class="form-group">
+										<label for="address1">Address 1</label>
+										<input type="text" class="form-control" id="address1"
+											placeholder="Address 1" th:field="*{addressLine1}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('addressLine1')}"
+											th:errors="*{addressLine1}"></div>
+									</div>
+									<div class="form-group">
+										<label for="address2">Address 2</label>
+										<input type="text" class="form-control" id="address2"
+											placeholder="Address 1" th:field="*{addressLine2}">
+									</div>
+									<div class="form-group">
+										<label for="city">City</label>
+										<input type="text" class="form-control" id="city"
+											placeholder="City" th:field="*{city}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+									</div>
+									<div class="form-group">
+										<label for="country">Country</label>
+										<select class="custom-select" id="country"
+											th:field="*{country}">
+											<option value="" selected>Select country...</option>
+											<option value="Argentina">Argentina</option>
+											<option value="Japan">Japan</option>
+											<option value="USA">United States</option>
+											<option value="France">France</option>
+											<option value="Australia">Australia</option>
+											<option value="UK">United Kingdom</option>
+										</select>
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('country')}"
+											th:errors="*{country}"></div>
+									</div>
+									<div class="form-group">
+										<label for="state">State</label>
+										<input type="text" class="form-control" id="state"
+											placeholder="State" th:field="*{state}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
+									</div>
+									<div class="form-group">
+										<label for="postalCode">Postal Code</label>
+										<input type="text" class="form-control" id="postalCode"
+											placeholder="Postal Code" th:field="*{postalCode}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('postalCode')}"
+											th:errors="*{postalCode}"></div>
+									</div>
+									<div class="form-group">
+										<label for="territory">Territory</label>
+										<input type="text" class="form-control" id="territory"
+											placeholder="Territory" th:field="*{territory}">
+									</div>
+									<div class="form-group m-0">
+										<button type="submit" class="btn confirm-button">Save</button>
+										<a th:href="@{/offices}" class="btn cancel-button" id="delRef">Cancel
+										</a>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</html>
