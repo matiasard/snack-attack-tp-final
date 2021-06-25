@@ -30,8 +30,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes({ @JsonSubTypes.Type(value = UsuarioEmpleado.class, name = "cliente"),
-		@JsonSubTypes.Type(value = UsuarioCliente.class, name = "empleado") })
+@JsonSubTypes({ @JsonSubTypes.Type(value = UsuarioEmpleado.class, name = "empleado"),
+		@JsonSubTypes.Type(value = UsuarioCliente.class, name = "cliente") })
 public abstract class Usuario {
 
 	@Id
@@ -39,12 +39,12 @@ public abstract class Usuario {
 	@Column(name = "userNumber")
 	private Long id;
 
-	@NotBlank(message = "The username must not have blank spaces.")
-	@Length(min = 4, max = 16, message = "Username must be at least 4 characters.")
-	@Column(name = "username", nullable = false, length = 16)
+	@NotBlank(message = "Username must not have blank spaces.")
+	@Length(min = 6, max = 16, message = "Username must be at least 6 characters.")
+	@Column(name = "username", unique = true, nullable = false, length = 16)
 	private String username;
 
-	@NotBlank(message = "The pasword must not have blank spaces.")
+	@NotBlank(message = "Password must not have blank spaces.")
 	@Length(min = 6, max = 16, message = "Password must be at least 6 characters.")
 	@Column(name = "password", nullable = false, length = 16)
 	private String password;

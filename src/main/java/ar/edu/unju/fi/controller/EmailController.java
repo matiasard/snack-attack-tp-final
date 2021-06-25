@@ -3,7 +3,10 @@
  */
 package ar.edu.unju.fi.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +24,10 @@ public class EmailController {
 	private MailService mailService;
 
 	@PostMapping("/send/mail")
-	public String sendMail(@RequestParam("EMAIL") String email) {
-		String message = "Datos de contacto: " + email + "\nNombre: "+ email + "\nE-mail: " + email;
+	public String sendMail(@Valid @RequestParam("EMAIL") String email) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Custom-Header", "mail");
+		String message = "Datos de contacto: Cliente from classicmodelscars \nNombre: Cliente\nE-mail: " + email;
 		mailService.sendMail(email, "programacion.visual.1996@gmail.com", email, message);
 		return "redirect:/";
 	}

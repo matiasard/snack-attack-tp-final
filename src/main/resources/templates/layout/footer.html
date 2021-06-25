@@ -13,14 +13,12 @@
 							data-wow-delay="0.2s"
 							style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
 							<h3 class="f-title f_600 t_color f_size_18">Contact</h3>
-							<form  method="POST" th:action="@{/send/mail}" id="emailForm"
-								class="f_subscribe_two mailchimp" novalidate="true"
-								_lpchecked="1">
-								<!-- Faltan un par de validators-->
+							<form method="POST" th:action="@{/send/mail}" id="emailForm"
+								class="f_subscribe_two mailchimp">
 								<input type="email" name="EMAIL" class="form-control memail"
 									placeholder="your@email.com" th:required="true">
 								<button id="btnForm" class="btn btn_get btn_get_two"
-									type="submit">Send</button>
+									type="submit" onclick="myFunction()">Send</button>
 								<p class="mchimp-errmessage" style="display: none;"></p>
 								<p class="mchimp-sucmessage" style="display: none;"></p>
 							</form>
@@ -118,6 +116,11 @@
     cookieContainer.classList.add("active");
   	}
 }, 2000);</script>
+		<script type="text/javascript">
+	function myFunction() {
+  	setTimeout(function(){ alert("Su correo ha sido enviado con éxito"); }, 3000);
+}
+</script>
 	</footer>
 </body>
 </html>
