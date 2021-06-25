@@ -17,6 +17,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -40,32 +43,37 @@ public class Product {
 	@Column(name = "productCode")
 	private String id;
 
-	@NotEmpty
+	@NotEmpty(message = "The Product Name must not be null nor empty.")
 	@Length(max = 70)
 	@Column(name = "productName", nullable = false, length = 70)
 	private String name;
 
-	@NotBlank
+	@NotBlank(message = "The Product Scale not be null nor must contain  one whitespace character.")
 	@Length(max = 10)
 	@Column(name = "productScale", nullable = false, length = 10)
 	private String scale;
 
-	@NotBlank
+	@NotBlank(message = "The field Product Vendor not be null nor must contain  one whitespace character.")
 	@Length(max = 50)
 	@Column(name = "productVendor", nullable = false, length = 50)
 	private String vendor;
 
-	@NotBlank
+	@NotBlank(message = "The Product Description not be null nor must contain  one whitespace character.")
 	@Column(name = "productDescription", nullable = false)
 	private String description;
 
-	@NotNull
+	@NotNull(message="The Quantity in Stock must not be null")
+	@Min(value=0,  message="Invalid data. The Quantity in Stock must not be a negative number. ")
 	@Column(nullable = false)
 	private Integer quantityInStock;
 
+	@NotNull(message="The Buy Price must not be null")
+	@Digits(integer=8, fraction = 2, message="The Buy Price must be a number whose value must be less than or equal to 99999999.99." )
 	@Column(nullable = false)
 	private BigDecimal buyPrice;
 
+	@NotNull(message="The MSRP must not be null")
+	@Digits(integer=8, fraction = 2, message="The MSRP must be a number whose value must be less than or equal to 99999999.99." )
 	@Column(nullable = false)
 	private BigDecimal MSRP;
 
@@ -73,6 +81,7 @@ public class Product {
 	@Column(name = "image", columnDefinition = "LONGBLOB")
 	private String image;
 
+	@Valid
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "productLine")
 	private ProductLines productLine;
