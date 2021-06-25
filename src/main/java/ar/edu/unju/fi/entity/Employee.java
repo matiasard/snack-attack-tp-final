@@ -53,7 +53,7 @@ public class Employee {
 	private String extension;
 
 	@Email(message = "Invalid email format ")
-	@NotBlank(message="You must enter an email address ")
+	@NotBlank(message = "You must enter an email address ")
 	@Length(max = 100)
 	@Column(nullable = false, length = 100, unique = true)
 	private String email;
@@ -76,7 +76,7 @@ public class Employee {
 	@Autowired
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "userNumber")
-	private UsuarioCliente usuarioEmpleado;
+	private UsuarioEmpleado usuarioEmpleado;
 
 	public Employee() {
 	}
@@ -196,14 +196,14 @@ public class Employee {
 	/**
 	 * @return the usuarioEmpleado
 	 */
-	public UsuarioCliente getUsuarioEmpleado() {
+	public UsuarioEmpleado getUsuarioEmpleado() {
 		return usuarioEmpleado;
 	}
 
 	/**
 	 * @param usuarioEmpleado the usuarioEmpleado to set
 	 */
-	public void setUsuarioEmpleado(UsuarioCliente usuarioEmpleado) {
+	public void setUsuarioEmpleado(UsuarioEmpleado usuarioEmpleado) {
 		this.usuarioEmpleado = usuarioEmpleado;
 	}
 

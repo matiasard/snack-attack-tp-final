@@ -3,8 +3,6 @@
  */
 package ar.edu.unju.fi.entity;
 
-import javax.persistence.CascadeType;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("cliente")
 public class UsuarioCliente extends Usuario {
 
-	@OneToOne(mappedBy = "usuarioCliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "usuarioCliente", fetch = FetchType.LAZY)
 	private Customer customer;
 
 	public UsuarioCliente() {

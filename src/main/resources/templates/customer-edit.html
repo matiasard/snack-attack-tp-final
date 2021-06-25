@@ -30,6 +30,7 @@
 								<form th:action="@{/customer/save}" th:object="${customer}"
 									method="POST" enctype="multipart/form-data">
 									<input type="hidden" th:field="*{number}" />
+									<input type="hidden" th:field="*{usuarioCliente.id}" />
 									<div class="form-group">
 										<label for="name">Name</label>
 										<input type="text" class="form-control" id="name"
@@ -40,7 +41,8 @@
 									<div class="form-group">
 										<label for="contactFirstName">Contact First Name</label>
 										<input type="text" class="form-control" id="contactFirstName"
-											placeholder="Address 1" th:field="*{contactFirstName}">
+											placeholder="Contact First Name"
+											th:field="*{contactFirstName}">
 										<div class="form-text text-danger"
 											th:if="${#fields.hasErrors('contactFirstName')}"
 											th:errors="*{contactFirstName}"></div>
@@ -126,7 +128,14 @@
 									<!-- In this case the logged user
 									 -->
 									<input type="hidden" th:field="*{salesRepresentative}" />
-									<!-- For create or eedit client user -->
+									<div class="form-group">
+										<label for="email">Email</label>
+										<input type="email" class="form-control" id="email"
+											placeholder="ejemplo@mail.com" th:field="*{email}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+									</div>
+									<!-- For create or edit client user -->
 									<div class="form-group">
 										<label for="username">Username</label>
 										<input type="text" class="form-control" id="username"
@@ -137,7 +146,7 @@
 									</div>
 									<div class="form-group">
 										<label for="password">Password</label>
-										<input type="text" class="form-control" id="username"
+										<input type="password" class="form-control" id="password"
 											placeholder="Password" th:field="*{usuarioCliente.password}">
 										<div class="form-text text-danger"
 											th:if="${#fields.hasErrors('usuarioCliente.password')}"
