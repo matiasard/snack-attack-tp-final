@@ -14,8 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,28 +37,28 @@ public class Employee {
 	@Column(name = "employeeNumber", unique = true, nullable = false, updatable = false)
 	private Long number;
 
-	@NotBlank
-	@Length(max = 50)
+	@NotBlank(message = "The field First Name must not be null nor must contain  one whitespace character.")
+	@Length(min = 2, max = 50, message = "Employee First Name must be at least two characters.")
 	@Column(nullable = false, length = 50)
 	private String firstName;
 
-	@NotBlank
-	@Length(max = 50)
+	@NotEmpty(message = "The field Last Name must not be null nor empty.")
+	@Length(min = 1, max = 50, message = "Employee First Name must be at least one character.")
 	@Column(nullable = false, length = 50)
 	private String lastName;
 
-	@NotBlank
+	@NotBlank(message = "The field Extension must not be null nor must contain  one whitespace character.")
 	@Length(max = 10)
 	@Column(nullable = false, length = 10)
 	private String extension;
 
-	@Email
-	@NotBlank
+	@Email(message = "Invalid email format ")
+	@NotBlank(message="You must enter an email address ")
 	@Length(max = 100)
 	@Column(nullable = false, length = 100, unique = true)
 	private String email;
 
-	@NotBlank
+	@NotEmpty(message = "The Job Title must not be null nor empty.")
 	@Length(max = 50)
 	@Column(nullable = false, length = 50)
 	private String jobTitle;
@@ -65,10 +67,12 @@ public class Employee {
 	@JoinColumn(name = "reportsTo")
 	private Employee reportsTo;
 
+	@Valid
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "officeCode")
 	private Office office;
 
+	@Valid
 	@Autowired
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "userNumber")

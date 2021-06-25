@@ -16,7 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
@@ -36,14 +40,17 @@ public class Order {
 	@Column(name = "orderNumber", unique = true, nullable = false, updatable = false)
 	private Long number;
 
-	//@NotBlank
+	@NotNull(message="The Order Date must not be null")
+	@PastOrPresent(message="The Order Date must be a date  in the past or in the present. ")
 	@Column(nullable = false)
 	private LocalDate orderDate;
 
-	//@NotBlank
+	@NotNull(message="The Required Date must not be null")
+	@Future(message="The Required Date must be a date or time in the future. ")
 	@Column(nullable = false)
 	private LocalDate requiredDate;
 
+	@Future(message="If you enter shipped date, it must be a future date .")
 	@Column
 	private LocalDate shippedDate;
 
@@ -55,6 +62,7 @@ public class Order {
 	@Column
 	private String comments;
 
+	@Valid
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customerNumber")
 	private Customer customer;
