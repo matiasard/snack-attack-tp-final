@@ -170,5 +170,10 @@ public class ProductController {
 		exporter.export(response);
 
 	}
-
+	
+	// @GetMapping("/products/details/{id}")
+	@GetMapping("/products/details-ejemplo")
+	String getProductDetail(){
+		return "product-details";
+	}
 }

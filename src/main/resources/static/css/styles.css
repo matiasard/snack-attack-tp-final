@@ -11,6 +11,9 @@ body {
 	background-color: #e7e7e7;
 }
 
+.lista {
+	list-style: none;
+}
 /***********************************************************
 *******	 HOME STYLE  */
 .forma-de-pago__titulo {
