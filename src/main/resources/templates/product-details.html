@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home</title>
+  <title>Product Detail</title>
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
   <link rel="stylesheet" th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
   <link rel="stylesheet" th:href="@{/css/styles.css}">
@@ -21,16 +21,15 @@
       <div class="col-md-6 mb-4 mb-md-0">
         <div class="col-12 mb-0">
           <figure class="rounded text-center">
-            <a href="#">
-              <img th:src="@{../img/productos/Lamborghini-LP750-4.jpg}" class="img-fluid rounded">
-            </a>
+            <img th:attr="src=@{'data:image/png;base64,'+${producto.image}}" 
+            class="img-fluid rounded" alt="img-product">
           </figure>
         </div>
       </div>
       <div class="col-md-6">
 
-        <h1><strong>Nombre del Producto</strong></h1>
-        <p class="mb-2 text-muted text-uppercase small">Categoria</p>
+        <h1 th:text="${producto.name}"><strong>Nombre del Producto</strong></h1>
+        <!-- <p class="mb-2 text-muted text-uppercase small">Categoria</p> -->
         <ul class="d-flex pl-0">
           <li class="lista">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 172 172"
@@ -115,24 +114,24 @@
             </svg>
           </li>
         </ul>
-        <p class="h2"><strong>$12.99</strong></p>
-        <p class="pt-1">Esta réplica cuenta con soporte de trabajo, suspensión delantera, palanca de
+        <p class="h2"><strong>$ <span th:text="${producto.buyPrice}"></span></strong></p>
+        <p class="pt-1" th:text="${producto.description}">Esta réplica cuenta con soporte de trabajo, suspensión delantera, palanca de
           cambio de marcha, palanca de freno de pie, cadena de transmisión, ruedas y dirección. Todas las piezas
           son particularmente delicadas debido a su escala precisa y requieren especial cuidado y atención.</p>
         <div class="table-responsive">
           <table class="table table-sm table-borderless mb-0">
             <tbody>
               <tr>
-                <th class="pl-0 w-25" scope="row"><strong>Escala</strong></th>
-                <td>1:10</td>
+                <th class="pl-0 w-25"><strong>Scale</strong></th>
+                <td th:text="${producto.scale}">1:10</td>
               </tr>
               <tr>
-                <th class="pl-0 w-25" scope="row"><strong>Stock</strong></th>
-                <td>748</td>
+                <th class="pl-0 w-25"><strong>Stock</strong></th>
+                <td th:text="${producto.quantityInStock}">748</td>
               </tr>
               <tr>
-                <th class="pl-0 w-25" scope="row"><strong>Vendedor</strong></th>
-                <td>Min Lin Diecast</td>
+                <th class="pl-0 w-25"><strong>Vendedor</strong></th>
+                <td th:text="${producto.vendor}">Min Lin Diecast</td>
               </tr>
             </tbody>
           </table>
@@ -144,19 +143,18 @@
             <tbody>
               <tr>
                 <td class="pl-0 pb-0 w-25">Cantidad</td>
-                <!-- <td class="pb-0">Seleccione la Escala</td> -->
               </tr>
               <tr>
                 <td class="row">
                   <div class="list-group list-group-horizontal mx-0 col-6">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                       class="list-group-item list-group-item-action col-2 py-2" style="border: 1px solid #a3a8ad;">
-                      -
+                      <strong>-</strong>
                     </button>
-                    <input class="col-3" min="0" name="quantity" value="1" type="number">
+                    <input class="col-5 col-md-4" min="0" name="quantity" value="1" type="number">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                       class="list-group-item list-group-item-action col-2 py-2" style="border: 1px solid #a3a8ad;">
-                      +
+                      <strong>+</strong>
                     </button>
                   </div>
                 </td>
@@ -185,6 +183,7 @@
     </div>
 
   </section>
+  <footer th:replace="layout/footer :: footer"></footer>
 
   <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
   <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>

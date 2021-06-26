@@ -173,9 +173,11 @@ public class ProductController {
 
 	}
 
-	// @GetMapping("/products/details/{id}")
-	@GetMapping("/products/details-ejemplo")
-	String getProductDetail() {
+	// Producto - Detalle del Producto
+	@GetMapping("/products/details/{id}")
+	public String getProductDetail(@PathVariable(value = "id") String id, Model model) throws Exception {
+		// int productDetail = new productDetail();
+		model.addAttribute("producto", productService.buscarProducto(id));
 		return "product-details";
 	}
 }
