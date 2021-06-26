@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employees</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet"
+	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+</head>
+<!-- style="background-color: #f5f7fa;" -->
+<body>
+	<!-- <div th:replace="layout/header :: header"></div> -->
+	<div th:replace="layout/nav-admin :: nav-admin"></div>
+	<!-- style="text-align: justify;" -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12" style="height: 30px;"></div>
+			<div th:replace="layout/nav-admin-left :: nav-admin-left"></div>
+			<div class="col-md-9 ml-sm-auto col-lg-10 py-4">
+				<div class="page-title-box">
+					<div class="container-fluid ">
+						<div class="row align-items-center">
+							<div class="col-sm-6">
+								<div class="page-title">
+									<h2 class="text-white pt-5 pt-md-0">EMPLOYEES</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mx-2 rounded bg-white shadow page-content__wrapper">
+					<a th:href="@{/employee/new}" class="btn btn-success ml-3 mt-3"
+						id="delRef"> Add employee <i class="fa fa-plus"></i></a>
+					<div class="col-12" style="overflow-x: auto;">
+						<table class="table table-hover content_table">
+							<thead>
+								<tr class="">
+									<th style="width: 6%">Employee Number</th>
+									<th>Last Name</th>
+									<th>First Name</th>
+									<th>Email</th>
+									<th>Office Code</th>
+									<th>Reports to</th>
+									<th>Job Title</th>
+									
+									<th style="width: 9%">Edit</th>
+									<th style="width: 10%">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="employee : ${employees}" class="text-center">
+									<td th:text="${employee.number}"></td>
+									<td th:text="${employee.lastName}"></td>
+									<td th:text="${employee.firstName}"></td>
+									<td th:text="${employee.email}"></td>
+									<td th:text="${employee.office.code}"></td>
+									<td th:text="${employee.reportsTo.number}"></td>
+									<td th:text="${employee.jobTitle}"></td>																										
+									<td><a
+										th:href="@{/employee/edit/{id}(id=${employee.number})}"
+										class="btn btn-warning">Edit <i class="fa fa-edit"></i></a></td>
+									<td><a data-toggle="modal"
+										data-target="#removeemployeeModal"
+										class="btn btn-danger delBtn"
+										th:attr="data-target='#removeemployeeModal'+${employee.number}">Delete
+											<i class="fa fa-trash"></i>
+									</a> 
+										<div class="modal fade"
+											th:id="removeemployeeModal+${employee.number}"
+											id="removeemployeeModal" tabindex="-1" role="dialog"
+											aria-labelledby="removeModalCenterTitle" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered"
+												role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" id="removeModalCenterTitle">Delete
+															employee</h4>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<p class="alert alert-danger">
+															Are you sure want to delete <span
+																th:text="${employee.lastName}"></span>?
+														</p>
+													</div>
+													<div class="modal-footer">
+														<a
+															th:href="@{/employee/delete/{id}(id=${employee.number})}"
+															class="btn btn-danger" id="delRef">Accept</a>
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Cancel</button>
+													</div>
+												</div>
+											</div>
+										</div></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- Pagination -->
+						<div class="row">
+							<div class="col-md-2"></div>
+							<div class="col-md-8">
+								<nav aria-label="Pagination">
+									<ul class="pagination justify-content-center d-flex flex-wrap">
+										<li class="page-item"
+											th:classappend="${prev == 0 ? 'disabled': ''}"><a
+											class="page-link" th:href="@{|/employees/?page=${prev}|}">Previous</a>
+										</li>
+										<li class="page-item" th:each="page : ${pages}"
+											th:classappend="${current == page ? 'active': ''}"><a
+											class="page-link" th:href="@{|/employees/?page=${page}|}"
+											th:text="${page}"></a></li>
+										<li class="page-item"
+											th:classappend="${current == last ? 'disabled': ''}"><a
+											class="page-link" th:href="@{|/employees/?page=${next}|}">Next</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="layout/footer :: footer"></div>
+</body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</html>
