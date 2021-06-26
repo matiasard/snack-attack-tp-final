@@ -5,16 +5,13 @@ package ar.edu.unju.fi.controller;
 
 import java.io.IOException;
 import java.util.Base64;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,15 +23,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import ar.edu.unju.fi.entity.Customer;
+import ar.edu.unju.fi.entity.Usuario;
+import ar.edu.unju.fi.entity.UsuarioCliente;
+import ar.edu.unju.fi.entity.UsuarioEmpleado;
+import ar.edu.unju.fi.repository.UsuarioRepository;
 import ar.edu.unju.fi.service.ICustomerService;
-import ar.edu.unju.fi.service.IEmployeeService;
+import ar.edu.unju.fi.service.imp.MailServiceImp;
 
 /**
  * @author Enzo Sandoval
  *
  */
 @Controller
-public class CustomerController {
+public class LoginController {
 
 	@Autowired
 	private Customer customer;
@@ -43,47 +44,26 @@ public class CustomerController {
 	private ICustomerService customerService;
 
 	@Autowired
-	private IEmployeeService employeeService;
+	private MailServiceImp mailServiceImp;
 
-	@GetMapping("/customers")
-	public String getCustomersPage(@RequestParam Map<String, Object> params, Model model) {
-		int page = params.get("page") != null ? Integer.valueOf(params.get("page").toString()) - 1 : 0;
-		PageRequest pageRequest = PageRequest.of(page, 10);
-		Page<Customer> pageCustomers = customerService.findAll(pageRequest);
-		int totalPage = pageCustomers.getTotalPages();
-		if (totalPage > 0) {
-			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
-			model.addAttribute("pages", pages);
-		}
-		model.addAttribute("customers", pageCustomers.getContent());
-		model.addAttribute("current", page + 1);
-		model.addAttribute("next", page + 2);
-		model.addAttribute("prev", page);
-		model.addAttribute("last", totalPage);
-		return "customer-crud";
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+
+	@GetMapping("/signin")
+	public String getSignInPage() {
+		return "signin";
 	}
 
-	@GetMapping("/customer/edit/{id}")
-	public String getEditCustomerPage(@PathVariable(value = "id") long id, Model model) throws Exception {
-		customer = customerService.buscarCliente(id);
-		model.addAttribute("customer", customer);
-		if (customer.getSalesRepresentative() == null) {
-			// Agregar el empleado logueado;
-		}
-		model.addAttribute("employess", employeeService.obtenerEmpleados());
-		return "customer-edit";
-	}
-
-	@GetMapping("/customer/new")
-	public String getNewCustomerPage(Model model) throws Exception {
+	@GetMapping("/signup")
+	public String getSignUpPage(Model model) {
 		customer = new Customer();
+		customer.setSalesRepresentative(null);
 		model.addAttribute("customer", customer);
-		model.addAttribute("employess", employeeService.obtenerEmpleados());
-		return "customer-edit";
+		return "signup";
 	}
 
-	@PostMapping(value = "/customer/save", consumes = "multipart/form-data")
-	public String getSaveCustomerAndRedirect(@RequestParam("file") MultipartFile file,
+	@PostMapping(value = "/user/save", consumes = "multipart/form-data")
+	public String getSaveUserAndConect(@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("customer") Customer customer, BindingResult result, Model model)
 			throws IOException {
 		if (!file.isEmpty()) {
@@ -96,17 +76,46 @@ public class CustomerController {
 		}
 		if (result.hasErrors()) {
 			model.addAttribute("customer", customer);
-			return "customer-edit";
+			return "signup";
 		} else {
+			String message = "Information: " + customer.getName() + "\nPhone:" + customer.getPhone() + "\nE-mail: "
+					+ customer.getUsuarioCliente().getEmail() + "\nAddress: " + customer.getAddressLine1() + ", "
+					+ customer.getCity() + ", " + customer.getCountry();
+			String subject = "Clasics Models Cars Credit Request";
+			mailServiceImp.sendMail(customer.getUsuarioCliente().getEmail(), "enzosandoval@hotmail.com", subject,
+					message);
 			customerService.guardar(customer);
-			return "redirect:/customers";
+			return "redirect:/";
 		}
 	}
 
-	@GetMapping(value = "/customer/delete/{id}")
-	public String delete(@PathVariable(value = "id") long id) {
-		customerService.borrar(id);
-		return "redirect:/customers";
+	@GetMapping("/user/edit/{id}")
+	public String getEditClientUserPage(@PathVariable(value = "id") long id, Model model) throws Exception {
+		customer = customerService.buscarCliente(id);
+		model.addAttribute("customer", customer);
+		return "customer-edit";
+	}
+
+	@GetMapping("/usuario/login")
+	public ResponseEntity<String> getUser(@Valid @RequestParam("username") String username,
+			@RequestParam("password") String password) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Custom-Header", "usuario");
+		String id = "";
+		String tipoUsuario = "";
+		try {
+			Usuario usuario = usuarioRepository.findByUsernameAndPassword(username, password);
+			id = String.valueOf(usuario.getId());
+			// Get tipo de usuario
+			if (usuario instanceof UsuarioCliente)
+				tipoUsuario = "Cliente";
+			else if (usuario instanceof UsuarioEmpleado)
+				tipoUsuario = "Empleado";
+
+		} catch (Exception ex) {
+			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.CONFLICT);
+		}
+		return new ResponseEntity<>("Bienvenido " + username, HttpStatus.OK);
 	}
 
 }

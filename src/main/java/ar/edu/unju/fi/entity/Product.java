@@ -62,18 +62,18 @@ public class Product {
 	@Column(name = "productDescription", nullable = false)
 	private String description;
 
-	@NotNull(message="The Quantity in Stock must not be null")
-	@Min(value=0,  message="Invalid data. The Quantity in Stock must not be a negative number. ")
+	@NotNull(message = "The Quantity in Stock must not be null")
+	@Min(value = 0, message = "Invalid data. The Quantity in Stock must not be a negative number. ")
 	@Column(nullable = false)
 	private Integer quantityInStock;
 
-	@NotNull(message="The Buy Price must not be null")
-	@Digits(integer=8, fraction = 2, message="The Buy Price must be a number whose value must be less than or equal to 99999999.99." )
+	@NotNull(message = "The Buy Price must not be null")
+	@Digits(integer = 8, fraction = 2, message = "The Buy Price must be a number whose value must be less than or equal to 99999999.99.")
 	@Column(nullable = false)
 	private BigDecimal buyPrice;
 
-	@NotNull(message="The MSRP must not be null")
-	@Digits(integer=8, fraction = 2, message="The MSRP must be a number whose value must be less than or equal to 99999999.99." )
+	@NotNull(message = "The MSRP must not be null")
+	@Digits(integer = 8, fraction = 2, message = "The MSRP must be a number whose value must be less than or equal to 99999999.99.")
 	@Column(nullable = false)
 	private BigDecimal MSRP;
 

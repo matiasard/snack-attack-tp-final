@@ -17,7 +17,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -93,12 +92,6 @@ public class Customer {
 	@ManyToOne
 	@JoinColumn(name = "salesRepEmployeeNumber")
 	private Employee salesRepresentative;
-
-	@Email(message = "Invalid email format ")
-	@NotBlank(message = "You must enter an email address ")
-	@Length(max = 100)
-	@Column(name = "email", nullable = false, length = 100, unique = true, updatable = true)
-	private String email;
 
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
@@ -291,20 +284,6 @@ public class Customer {
 	}
 
 	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
 	 * @return the usuarioCliente
 	 */
 	public UsuarioCliente getUsuarioCliente() {
@@ -324,7 +303,7 @@ public class Customer {
 				+ ", contactLastName=" + contactLastName + ", phone=" + phone + ", addressLine1=" + addressLine1
 				+ ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", postalCode="
 				+ postalCode + ", country=" + country + ", creditLimit=" + creditLimit + ", salesRepresentative="
-				+ salesRepresentative + ", email=" + email + ", usuarioCliente=" + usuarioCliente + "]";
+				+ salesRepresentative + ", usuarioCliente=" + usuarioCliente + "]";
 	}
 
 }
