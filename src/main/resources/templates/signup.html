@@ -22,45 +22,150 @@
 						<div class="card fat">
 							<div class="card-body">
 								<h4 class="card-title">Fill in your details</h4>
-								<form method="#" novalidate="">
+								<form th:action="@{/user/save}" th:object="${customer}"
+									method="post" enctype="multipart/form-data">
+									<input type="hidden" th:field="*{number}" />
+									<input type="hidden" th:field="*{usuarioCliente.id}" />
 									<div class="form-group">
 										<label for="name">Name</label>
-										<input id="name" type="text" class="form-control" name="name"
-											required autofocus>
+										<input type="text" class="form-control" id="name"
+											placeholder="Name" th:field="*{name}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 									</div>
 									<div class="form-group">
-										<label for="apellido">Last Name</label>
-										<input id="apellido" type="text" class="form-control"
-											name="apellido" required autofocus>
+										<label for="contactFirstName">Contact First Name</label>
+										<input type="text" class="form-control" id="contactFirstName"
+											placeholder="Contact First Name"
+											th:field="*{contactFirstName}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('contactFirstName')}"
+											th:errors="*{contactFirstName}"></div>
 									</div>
 									<div class="form-group">
-										<label for="dni">DNI</label>
-										<input id="dni" type="number" class="form-control" name="dni"
-											required autofocus>
+										<label for="contactLastName">Contact Last Name</label>
+										<input type="text" class="form-control" id="contactLastName"
+											placeholder="Contact Last Name" th:field="*{contactLastName}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('contactLastName')}"
+											th:errors="*{contactLastName}"></div>
 									</div>
+									<div class="form-group">
+										<label for="phone">Phone</label>
+										<input type="text" class="form-control" id="phone"
+											placeholder="Phone" th:field="*{phone}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+									</div>
+									<div class="form-group">
+										<label for="addressLine1">Address</label>
+										<input type="text" class="form-control" id="addressLine1"
+											placeholder="Address" th:field="*{addressLine1}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('addressLine1')}"
+											th:errors="*{addressLine1}"></div>
+									</div>
+									<input type="hidden" th:field="*{addressLine2}" />
+									<div class="form-group">
+										<label for="city">City</label>
+										<input type="text" class="form-control" id="city"
+											placeholder="City" th:field="*{city}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></div>
+									</div>
+									<div class="form-group">
+										<label for="state">State</label>
+										<input type="text" class="form-control" id="state"
+											placeholder="State" th:field="*{state}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></div>
+									</div>
+									<div class="form-group">
+										<label for="postalCode">Postal Code</label>
+										<input type="text" class="form-control" id="postalCode"
+											placeholder="Postal Code" th:field="*{postalCode}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('postalCode')}"
+											th:errors="*{postalCode}"></div>
+									</div>
+									<div class="form-group">
+										<label for="country">Country</label>
+										<select class="custom-select" id="country"
+											th:field="*{country}">
+											<option value="" selected>Select country...</option>
+											<option value="Argentina">Argentina</option>
+											<option value="Japan">Japan</option>
+											<option value="USA">United States</option>
+											<option value="France">France</option>
+											<option value="Australia">Australia</option>
+											<option value="UK">United Kingdom</option>
+										</select>
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('country')}"
+											th:errors="*{country}"></div>
+									</div>
+									<!-- Not available for new users -->
+									<input type="hidden" th:field="*{creditLimit}" />
+									<!-- In this case the logged user
+									 -->
+									<input type="hidden" th:field="*{salesRepresentative}" />
 									<div class="form-group">
 										<label for="email">Email</label>
-										<input id="email" type="email" class="form-control"
-											name="email" required>
+										<input type="email" class="form-control" id="email"
+											placeholder="your@mail.com"
+											th:field="*{usuarioCliente.email}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('usuarioCliente.email')}"
+											th:errors="*{usuarioCliente.email}"></div>
+									</div>
+									<!-- For create or edit client user -->
+									<div class="form-group">
+										<label for="username">Username</label>
+										<input type="text" class="form-control" id="username"
+											placeholder="Username" th:field="*{usuarioCliente.username}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('usuarioCliente.username')}"
+											th:errors="*{usuarioCliente.username}"></div>
 									</div>
 									<div class="form-group">
 										<label for="password">Password</label>
-										<input id="password" type="password" class="form-control"
-											name="password" required data-eye>
+										<input th:if="${customer.usuarioCliente.id == null}"
+											type="password" class="form-control" id="password"
+											placeholder="Password" th:field="*{usuarioCliente.password}">
+										<input th:if="${customer.usuarioCliente.id != null}"
+											type="text" class="form-control" id="password"
+											placeholder="Password" th:field="*{usuarioCliente.password}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('usuarioCliente.password')}"
+											th:errors="*{usuarioCliente.password}"></div>
+									</div>
+									<div class="form-group">
+										<label for="file">Image </label>
+										<input type="hidden" class="form-control" id="imagen"
+											th:name="image" th:value="*{usuarioCliente.image}" />
+										<input type="file" name="file" class="form-control-file"
+											accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"
+											onchange="loadFile(event)">
+										<img th:if="${customer.usuarioCliente.image == ''}"
+											id="output"
+											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
+											style="padding-top: 2px; width: 146px;" />
 									</div>
 									<div class="form-group">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" name="agree" id="agree"
-												class="custom-control-input" required="true"
-												style="margin-right: 10px;">
+												class="custom-control-input" style="margin-right: 10px;"
+												th:required="true">
 											<label for="agree" class="custom-control-label"
 												style="display: inline">
-												I accept <a href="#">terms and conditions. </a>
+												I accept <a th:href="@{/terms-and-conditions}">terms and
+													conditions. </a>
 											</label>
 										</div>
 									</div>
 									<div class="form-group m-0">
-										<button type="submit" class="btn confirm-button">Sign Up</button>
+										<button type="submit" class="btn confirm-button">Sign
+											Up</button>
 									</div>
 									<div class="mt-4 text-center">
 										Do you have an account?<a th:href="@{/signin}">Sign In</a>

@@ -37,21 +37,21 @@ public abstract class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "userNumber")
-	private Long id;
+	protected Long id;
 
 	@NotBlank(message = "Username must not have blank spaces.")
 	@Length(min = 6, max = 16, message = "Username must be at least 6 characters.")
 	@Column(name = "username", unique = true, nullable = false, length = 16)
-	private String username;
+	protected String username;
 
 	@NotBlank(message = "Password must not have blank spaces.")
 	@Length(min = 6, max = 16, message = "Password must be at least 6 characters.")
 	@Column(name = "password", nullable = false, length = 16)
-	private String password;
+	protected String password;
 
 	@Lob
 	@Column(name = "image", columnDefinition = "LONGBLOB")
-	private String image;
+	protected String image;
 
 	public Usuario() {
 	}

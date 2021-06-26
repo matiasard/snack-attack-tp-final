@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ar.edu.unju.fi.service.imp.MailService;
+import ar.edu.unju.fi.service.imp.MailServiceImp;
 
 /**
  * @author Enzo Sandoval
@@ -21,14 +21,14 @@ import ar.edu.unju.fi.service.imp.MailService;
 public class EmailController {
 
 	@Autowired
-	private MailService mailService;
+	private MailServiceImp mailServiceImp;
 
 	@PostMapping("/send/mail")
 	public String sendMail(@Valid @RequestParam("EMAIL") String email) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Custom-Header", "mail");
 		String message = "Datos de contacto: Cliente from classicmodelscars \nNombre: Cliente\nE-mail: " + email;
-		mailService.sendMail(email, "programacion.visual.1996@gmail.com", email, message);
+		mailServiceImp.sendMail(email, "programacion.visual.1996@gmail.com", email, message);
 		return "redirect:/";
 	}
 

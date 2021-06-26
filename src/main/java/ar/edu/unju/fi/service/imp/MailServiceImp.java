@@ -13,7 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
  *
  */
 @Service
-public class MailService {
+public class MailServiceImp {
 
 	@Autowired
 	private JavaMailSender javaMailSender;

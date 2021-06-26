@@ -128,7 +128,9 @@ public class ProductController {
 			product.setImage(base64);
 		}
 		if (result.hasErrors()) {
+			product.setId(null);
 			model.addAttribute("product", product);
+			model.addAttribute("productLines", productLinesService.obtenerLineasDeProductos());
 			return "product-edit";
 		} else {
 			productService.guardar(product);
@@ -170,10 +172,10 @@ public class ProductController {
 		exporter.export(response);
 
 	}
-	
+
 	// @GetMapping("/products/details/{id}")
 	@GetMapping("/products/details-ejemplo")
-	String getProductDetail(){
+	String getProductDetail() {
 		return "product-details";
 	}
 }

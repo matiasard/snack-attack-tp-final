@@ -25,7 +25,7 @@
 								<h1 th:if="${customer.number == null}" class="text-center">New
 									Customer</h1>
 								<h1 th:if="${customer.number != null}" class="text-center">Edit
-									Office</h1>
+									Customer</h1>
 								<br>
 								<form th:action="@{/customer/save}" th:object="${customer}"
 									method="POST" enctype="multipart/form-data">
@@ -48,7 +48,7 @@
 											th:errors="*{contactFirstName}"></div>
 									</div>
 									<div class="form-group">
-										<label for="contactLastName">Contanct Last Name</label>
+										<label for="contactLastName">Contant Last Name</label>
 										<input type="text" class="form-control" id="contactLastName"
 											placeholder="Contact Last Name" th:field="*{contactLastName}">
 										<div class="form-text text-danger"
@@ -131,9 +131,11 @@
 									<div class="form-group">
 										<label for="email">Email</label>
 										<input type="email" class="form-control" id="email"
-											placeholder="ejemplo@mail.com" th:field="*{email}">
+											placeholder="your@mail.com"
+											th:field="*{usuarioCliente.email}">
 										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+											th:if="${#fields.hasErrors('usuarioCliente.email')}"
+											th:errors="*{usuarioCliente.email}"></div>
 									</div>
 									<!-- For create or edit client user -->
 									<div class="form-group">
@@ -146,7 +148,11 @@
 									</div>
 									<div class="form-group">
 										<label for="password">Password</label>
-										<input type="password" class="form-control" id="password"
+										<input th:if="${customer.usuarioCliente.id == 0}"
+											type="password" class="form-control" id="password"
+											placeholder="Password" th:field="*{usuarioCliente.password}">
+										<input th:if="${customer.usuarioCliente.id != 0}"
+											type="text" class="form-control" id="password"
 											placeholder="Password" th:field="*{usuarioCliente.password}">
 										<div class="form-text text-danger"
 											th:if="${#fields.hasErrors('usuarioCliente.password')}"
@@ -159,11 +165,8 @@
 										<input type="file" name="file" class="form-control-file"
 											accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"
 											onchange="loadFile(event)">
-										<img th:if="${customer.usuarioCliente.image != ''}"
+										<img th:if="${customer.usuarioCliente.image == ''}"
 											id="output"
-											th:src="*{'data:image/png;base64,'+usuarioCliente.image}"
-											style="padding-top: 2px; width: 146px;" /> <img
-											th:if="${customer.usuarioCliente.image == ''}" id="output"
 											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
 											style="padding-top: 2px; width: 146px;" />
 									</div>
