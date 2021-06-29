@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 </head>
-
 <body>
-  <header th:fragment="nav-admin" class="nav-admin fixed-top">
-    <!-- background-color: #030848!important; -->
-    <!-- background-color: #3b3098!important; -->
-    <!-- background-color: #32297c!important; -->
-    <!-- background-color: #6b74f9!important; -->
-    <!-- background-color: #776bdf!important; -->
-    <!-- background-color: #8b7ee7!important; -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark"
+	<header th:fragment="nav-admin" class="nav-admin fixed-top">
+		<!-- background-color: #030848!important; -->
+		<!-- background-color: #3b3098!important; -->
+		<!-- background-color: #32297c!important; -->
+		<!-- background-color: #6b74f9!important; -->
+		<!-- background-color: #776bdf!important; -->
+		<!-- background-color: #8b7ee7!important; -->
+		<!-- <nav class="navbar navbar-expand-lg navbar-light bg-dark"
       style="box-shadow: inset 0 -1px 0 rgb(0 0 0 / 10%); background-color: #32297c!important;">
       <div class="container">
         <a class="navbar-brand text-white" href="#">Navbar</a>
@@ -40,44 +38,55 @@
         </div>
       </div>
     </nav> -->
-
-
-    <nav class="navbar navbar-light bg-dark p-3"
-      style="box-shadow: inset 0 -1px 0 rgb(0 0 0 / 10%); background-color: #32297c!important;">
-      <div class="d-flex col-12 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
-        <a class="navbar-brand text-white" th:href="@{/}">
-          Japan Toys
-        </a>
-        <div class="d-flex">
-          <!-- BARRA DE BUSQUEDA -->
-          <!-- <div class="col-4 col-md-8">
+		<nav class="navbar navbar-light bg-dark p-3"
+			style="box-shadow: inset 0 -1px 0 rgb(0 0 0/ 10%); background-color: #32297c !important;">
+			<div
+				class="d-flex col-12 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+				<a class="navbar-brand text-white" th:href="@{/}"> Classic Model
+					<span style="color: red;"> Cars</span>
+				</a>
+				<div class="d-flex">
+					<!-- BARRA DE BUSQUEDA -->
+					<!-- <div class="col-4 col-md-8">
             <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
           </div> -->
-          <!-- FIN BARRA DE BUSQUEDA -->
-          <div class="dropdown mx-3">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-expanded="false">
-              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-              width="24" height="24"
-              viewBox="0 0 172 172"
-              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v50.16667v50.16667c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-100.33333c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM35.83333,35.83333h100.33333v100.33333h-100.33333v-43h57.33333v14.33333l21.5,-21.5l-21.5,-21.5v14.33333h-57.33333z"></path></g></g></svg>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" th:href="@{/signin}">Log Out</a></li>
-            </ul>
-          </div>
-          <!-- BOTON MENU DESPLEGABLE -->
-          <button class="navbar-toggler d-md-none collapsed mb-3 bg-white" type="button" data-toggle="collapse"
-            data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>
-
-      </div>
-    </nav>
-  </header>
+					<!-- FIN BARRA DE BUSQUEDA -->
+					<div class="dropdown mx-3">
+						<button class="btn btn-primary dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown"
+							aria-expanded="false">
+							<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+								width="24" height="24" viewBox="0 0 172 172"
+								style="fill: #000000;">
+								<g fill="none" fill-rule="nonzero" stroke="none"
+									stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+									stroke-miterlimit="10" stroke-dasharray=""
+									stroke-dashoffset="0" font-family="none" font-weight="none"
+									font-size="none" text-anchor="none"
+									style="mix-blend-mode: normal">
+								<path d="M0,172v-172h172v172z" fill="none"></path>
+								<g fill="#ffffff">
+								<path
+									d="M35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v50.16667v50.16667c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-100.33333c0,-7.83362 -6.49972,-14.33333 -14.33333,-14.33333zM35.83333,35.83333h100.33333v100.33333h-100.33333v-43h57.33333v14.33333l21.5,-21.5l-21.5,-21.5v14.33333h-57.33333z"></path></g></g></svg>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<li><a class="dropdown-item" href="#">Settings</a></li>
+							<li><form th:action="@{/logout}" method="post" style="margin-left: 10px;">
+									<input class="btn" type="submit" value="Logout" />
+								</form></li>
+						</ul>
+					</div>
+					<!-- BOTON MENU DESPLEGABLE -->
+					<button class="navbar-toggler d-md-none collapsed mb-3 bg-white"
+						type="button" data-toggle="collapse" data-target="#sidebar"
+						aria-controls="sidebar" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				</div>
+			</div>
+			</div>
+		</nav>
+	</header>
 </body>
-
 </html>

@@ -35,102 +35,104 @@
 					</div>
 				</div>
 				<!-- FIN Título de la página de inicio -->
-				<div class="row mx-2 mb-4 rounded bg-white shadow page-content__wrapper">
-				<a th:href="@{/product/new}" class="btn btn-success ml-3 mt-3" id="addRef">Add
-					Product <i class="fa fa-plus"></i>
-				</a>
-				<div class="col-12" style="overflow-x: auto;">
-				<table class="table table-hover content_table">
-					<thead>
-						<tr class="text-center">
-							<th style="width: 6%">Code</th>
-							<th style="width: 24%">Name</th>
-							<th>Product Line</th>
-							<th>Sales price</th>
-							<th style="width: 10%">Image</th>
-							<th>Stock</th>
-							<th>Vendor</th>
-							<th style="width: 9%">Edit</th>
-							<th style="width: 10%">Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="product : ${products}" class="text-center">
-							<td th:text="${product.id}"></td>
-							<td th:text="${product.name}"></td>
-							<td th:text="${product.productLine.productLine}"></td>
-							<td>$ <span
-								th:text="${#numbers.formatDecimal(product.MSRP, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
-							<td><img class="card-img-top m-auto"
-								th:src="*{'data:image/png;base64,'+product.image}"></td>
-							<td th:text="${product.quantityInStock}"></td>
-							<td th:text="${product.vendor}"></td>
-							<td><a th:href="@{/product/edit/{id}(id=${product.id})}"
-								class="btn btn-warning">Edit <i class="fa fa-edit"></i></a></td>
-							<td><a data-toggle="modal" data-target="#removeProductModal"
-								class="btn btn-danger delBtn"
-								th:attr="data-target='#removeProductModal'+${product.id}">Delete
-									<i class="fa fa-trash"></i>
-							</a>
-								<div class="modal fade"
-									th:id="removeProductModal+${product.id}"
-									id="removeProductoModal" tabindex="-1" role="dialog"
-									aria-labelledby="removeModalCenterTitle" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title" id="removeModalCenterTitle">Delete
-													Product</h4>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
+				<div
+					class="row mx-2 mb-4 rounded bg-white shadow page-content__wrapper">
+					<a th:href="@{/product/new}" class="btn btn-success ml-3 mt-3"
+						id="addRef">Add Product <i class="fa fa-plus"></i>
+					</a>
+					<div class="col-12" style="overflow-x: auto;">
+						<table class="table table-hover content_table">
+							<thead>
+								<tr class="text-center">
+									<th style="width: 6%">Code</th>
+									<th style="width: 24%">Name</th>
+									<th>Product Line</th>
+									<th>Sales price</th>
+									<th style="width: 10%">Image</th>
+									<th>Stock</th>
+									<th>Vendor</th>
+									<th style="width: 9%">Edit</th>
+									<th style="width: 10%">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="product : ${products}" class="text-center">
+									<td th:text="${product.id}"></td>
+									<td th:text="${product.name}"></td>
+									<td th:text="${product.productLine.productLine}"></td>
+									<td>$ <span
+										th:text="${#numbers.formatDecimal(product.MSRP, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
+									<td><img class="card-img-top m-auto"
+										th:src="*{'data:image/png;base64,'+product.image}"></td>
+									<td th:text="${product.quantityInStock}"></td>
+									<td th:text="${product.vendor}"></td>
+									<td><a th:href="@{/product/edit/{id}(id=${product.id})}"
+										class="btn btn-warning">Edit <i class="fa fa-edit"></i></a></td>
+									<td><a data-toggle="modal"
+										data-target="#removeProductModal"
+										class="btn btn-danger delBtn"
+										th:attr="data-target='#removeProductModal'+${product.id}">Delete
+											<i class="fa fa-trash"></i>
+									</a>
+										<div class="modal fade"
+											th:id="removeProductModal+${product.id}"
+											id="removeProductoModal" tabindex="-1" role="dialog"
+											aria-labelledby="removeModalCenterTitle" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered"
+												role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" id="removeModalCenterTitle">Delete
+															Product</h4>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<p class="alert alert-danger">
+															Are you sure want to delete <span
+																th:text="${product.name}"></span>?
+														</p>
+													</div>
+													<div class="modal-footer">
+														<a th:href="@{/product/delete/{id}(id=${product.id})}"
+															class="btn btn-danger" id="delRef">Delete</a>
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Cancel</button>
+													</div>
+												</div>
 											</div>
-											<div class="modal-body">
-												<p class="alert alert-danger">
-													Are you sure want to delete <span th:text="${product.name}"></span>?
-												</p>
-											</div>
-											<div class="modal-footer">
-												<a th:href="@{/product/delete/{id}(id=${product.id})}"
-													class="btn btn-danger" id="delRef">Delete</a>
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Cancel</button>
-											</div>
-										</div>
-									</div>
-								</div></td>
-						</tr>
-					</tbody>
-				</table>
-				<!-- Pagination -->
-				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
-						<nav aria-label="Pagination">
-							<ul class="pagination justify-content-center">
-								<li class="page-item"
-									th:classappend="${prev == 0 ? 'disabled': ''}"><a
-									class="page-link" th:href="@{|/products/?page=${prev}|}">Previous</a></li>
-								<li class="page-item" th:each="page : ${pages}"
-									th:classappend="${current == page ? 'active': ''}"><a
-									class="page-link" th:href="@{|/products/?page=${page}|}"
-									th:text="${page}"></a></li>
-								<li class="page-item"
-									th:classappend="${current == last ? 'disabled': ''}"><a
-									class="page-link" th:href="@{|/products/?page=${next}|}">Next</a></li>
-							</ul>
-						</nav>
+										</div></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- Pagination -->
+						<div class="row">
+							<div class="col-md-2"></div>
+							<div class="col-md-8">
+								<nav aria-label="Pagination">
+									<ul class="pagination justify-content-center">
+										<li class="page-item"
+											th:classappend="${prev == 0 ? 'disabled': ''}"><a
+											class="page-link" th:href="@{|/products/?page=${prev}|}">Previous</a></li>
+										<li class="page-item" th:each="page : ${pages}"
+											th:classappend="${current == page ? 'active': ''}"><a
+											class="page-link" th:href="@{|/products/?page=${page}|}"
+											th:text="${page}"></a></li>
+										<li class="page-item"
+											th:classappend="${current == last ? 'disabled': ''}"><a
+											class="page-link" th:href="@{|/products/?page=${next}|}">Next</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
 					</div>
-					<div class="col-md-2"></div>
 				</div>
 			</div>
 		</div>
-		</div>
-		</div>
 	</div>
-	<div th:replace="layout/footer :: footer"></div>
-	</script>
 </body>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
