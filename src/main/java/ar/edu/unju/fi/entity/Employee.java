@@ -67,13 +67,10 @@ public class Employee {
 	@JoinColumn(name = "reportsTo")
 	private Employee reportsTo;
 
-	@Valid
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "officeCode")
 	private Office office;
 
-	@Valid
-	@Autowired
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "userNumber")
 	private UsuarioEmpleado usuarioEmpleado;

@@ -42,7 +42,7 @@
 				<!-- FIN Título de la página de inicio -->
 
 				<!-- Contenido -->
-				<h3>Bienvenido</h3>
+				<h3>Bienvenido <span th:text="${#authentication.getPrincipal().getUsername()}"></span></h3>
 				
 
 			</main>

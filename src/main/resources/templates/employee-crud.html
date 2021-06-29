@@ -59,7 +59,7 @@
 									<td th:text="${employee.firstName}"></td>
 									<td th:text="${employee.email}"></td>
 									<td th:text="${employee.office.code}"></td>
-									<td th:text="${employee.reportsTo.number}"></td>
+									<td th:if="${employee.reportsTo.number != null}" th:text="${employee.reportsTo.number}"></td>
 									<td th:text="${employee.jobTitle}"></td>																										
 									<td><a
 										th:href="@{/employee/edit/{id}(id=${employee.number})}"
