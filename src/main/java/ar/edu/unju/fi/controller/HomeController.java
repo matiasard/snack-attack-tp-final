@@ -39,6 +39,10 @@ public class HomeController {
 		return "terms-and-conditions";
 	}
 
+	/**
+	 * 
+	 * @return Home del usuario conectado
+	 */
 	@GetMapping("/admin")
 	public String getAdminPanel() {
 		return "admin-panel";

@@ -25,16 +25,31 @@
 							th:href="@{/products}">Products</a></li>
 						</li>
 						<!---->
-						<div class="rectangle">
+						<div class="rectangle" sec:authorize="isAnonymous()">
 							<li class="nav-item sign-in px-0"
 								style="color: rgb(254, 39, 52);"><a href="#" target="_self"
 								class="nav-link" th:href="@{/login}">Sign In</a></li>
 						</div>
-						<div class="signup-rectangle">
-							<li class="nav-item sign-up px-0"
-								style="color: rgb(255, 255, 255);"><a href="#"
-								target="_self" class="nav-link" th:href="@{/signup}">Sign up</a></li>
-						</div>
+						<li class="nav-item" sec:authorize="isAuthenticated()">
+							<div class="dropdown">
+								<a class="dropdown-toggle" href="#" role="button"
+									id="dropdownMenuLink" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"><img
+									style="width: 36px;"
+									src="https://uifaces.co/our-content/donated/fyXUlj0e.jpg"
+									class="w-25 border border-primary rounded-circle"
+									alt="user-avatar"></a>
+								<div class="dropdown-menu justify-content-end"
+									aria-labelledby="dropdownMenuLink">
+									<a class="dropdown-item text-center" href="#"><span
+										th:text="${#authentication.getPrincipal().getUsername()}"></span></a>
+									<form class="text-center" th:action="@{/logout}" method="post">
+										<input class="btn" type="submit" value="Salir" />
+									</form>
+								</div>
+							</div>
+						</li>
+
 					</ul>
 				</div>
 			</nav>

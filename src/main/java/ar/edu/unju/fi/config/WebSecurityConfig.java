@@ -55,7 +55,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.permitAll()
 			.antMatchers(HttpMethod.POST,"/user/save")
 			.permitAll()
-			.antMatchers(HttpMethod.GET, "/products/details/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/products/details/**")
+			.permitAll()
+			.antMatchers(HttpMethod.GET, "/search/**")
+			.permitAll()
+			.antMatchers(HttpMethod.GET, "/terms-and-conditions")
+			.permitAll()
+			.antMatchers(HttpMethod.POST, "/send/mail")
+			.permitAll()
+			.antMatchers("/products/export/to/pdf")
+			.permitAll()
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
@@ -69,7 +78,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.logout()
 			.permitAll()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-	        .logoutSuccessUrl("/login?logot").permitAll()
+	        .logoutSuccessUrl("/").permitAll()
 	        .deleteCookies("JSESSIONID");
 		http.csrf().disable();    
 	        
