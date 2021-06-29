@@ -8,15 +8,21 @@
 	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/styles.css}">
 <link rel="stylesheet" th:href="@{/css/header.css}">
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/tables.css}">
 <link rel="stylesheet"
-	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}">
+	th:href="@{/webjars/fontawesome/css/font-awesome.min.css}"></link>
 </head>
-<!-- style="background-color: #f5f7fa;" -->
 <body>
 	<!-- <div th:replace="layout/header :: header"></div> -->
 	<div th:replace="layout/nav-admin :: nav-admin"></div>
-	<div class="container">
-		<div style="height: 160px;"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div th:replace="layout/nav-admin-left :: nav-admin-left"></div>
+			<div class="col-md-9 ml-sm-auto col-lg-10">
+			
+			
+			<div style="height: 160px;"></div>
 		<h2 align="center">Total Products by Category</h2>
 		<div id="container"
 			style="width: 800px; height: 400px; margin: 0 auto"></div>
@@ -71,6 +77,11 @@
     });
     });
 </script>
+			
+			
+			</div>
+		</div>
+		
 </body>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>

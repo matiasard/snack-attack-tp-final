@@ -30,26 +30,24 @@
 								<form th:action="@{/employee/save}" th:object="${employee}"
 									method="POST" class="form_content">
 									<input type="hidden" th:field="*{number}" />
-									<input type="hidden" th:field="*{usuarioEmpleado.id}" />
-									
-									<div class="form-group">	
-										<label for="lastName"> Last Name</label>
-										<input type="text" class="form-control" id="lastname"
-											placeholder="Last Name" th:field="*{lastName}">
-										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
-									</div>
+									<input type="hidden" th:field="*{usuarioEmpleado}" />
 									
 									<div class="form-group">
-										<label for="firstName">Name</label>
+										<label for="firstName">First Name</label>
 										<input type="text" class="form-control" id="firstName"
-											placeholder="First Name"
-											th:field="*{firstName}">
+											placeholder="First Name" th:field="*{firstName}">
 										<div class="form-text text-danger"
 											th:if="${#fields.hasErrors('firstName')}"
 											th:errors="*{firstName}"></div>
 									</div>
-									
+									<div class="form-group">
+										<label for="lastName"> Last Name</label>
+										<input type="text" class="form-control" id="lastname"
+											placeholder="Last Name" th:field="*{lastName}">
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('lastName')}"
+											th:errors="*{lastName}"></div>
+									</div>
 									<div class="form-group">
 										<label for="contactLastName">Extension</label>
 										<input type="text" class="form-control" id="Extension"
@@ -66,55 +64,65 @@
 											th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 									</div>
 									<div class="form-group">
-										<label for="addressLine1">Office Code</label>
-										<input type="text" class="form-control" id="office"
-											placeholder="Office Code" th:field="*{office.code}">
+										<label for="oficina">Office</label>
+										<select id="oficina" th:field="*{office}" class="form-control">
+											<option th:each="oficina : ${oficinas}"
+												th:value="${oficina.code}"
+												th:text="${oficina.nombre}+' - '+${oficina.country}"></option>
+										</select>
 										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('office.code')}"
-											th:errors="*{office.code}"></div>
+											th:if="${#fields.hasErrors('office')}" th:errors="*{office}"></div>
+									</div>
+									
+									<div th:if="${employee.reportsTo == null}" class="form-group">
+										<label for="reportsTo">Reports to</label>
+										<select id="reportsTo" th:field="*{reportsTo.number}"
+											class="form-control">
+											<option th:each="empleado: ${empleados}"
+												th:value="${empleado.number}"
+												th:text="${empleado.firstName}+', '+${empleado.lastName}"></option>
+										</select>
+										<div class="form-text text-danger"
+											th:if="${#fields.hasErrors('reportsTo')}"
+											th:errors="*{reportsTo}"></div>
 									</div>
 									<div class="form-group">
-										<label for="addressLine2">Reports To</label>
-										<input type="text" class="form-control" id="reporsTo"
-											placeholder="Reports To" th:field="*{reportsTo.number}">
+										<label for="jobTitle">Job Title</label>
+										<select class="custom-select" id="jobTitle"
+											th:field="*{jobTitle}">
+											<option value="" selected>Select...</option>
+											<option value="ROLE_USER">Sales Rep</option>
+											<option value="ROLE_ADMIN">Administrator</option>
+										</select>
 										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('reportsTo.number')}"
-											th:errors="*{reportsTo.number}"></div>
+											th:if="${#fields.hasErrors('jobTitle')}"
+											th:errors="*{jobTitle}"></div>
 									</div>
-									
 									<div class="form-group">
-										<label for="city">Job Title</label>
-										<input type="text" class="form-control" id="city"
-											placeholder="Job" th:field="*{jobTitle}">
+										<label for="username">Username</label>
+										<input type="text" class="form-control" id="username"
+											placeholder="Username" th:field="*{usuarioEmpleado.username}">
 										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}"></div>
+											th:if="${#fields.hasErrors('usuarioEmpleado.username')}"
+											th:errors="*{usuarioEmpleado.username}"></div>
 									</div>
-									
 									<div class="form-group">
-										<label for="state">Username</label>
-										<input type="text" class="form-control" id="employeeusername"
-											placeholder="User Id" th:field="*{usuarioEmpleado.username}">
+										<label for="password">Password</label>
+										<input th:if="${employee.usuarioEmpleado.id == null}"
+											type="password" class="form-control" id="password"
+											placeholder="Password" th:field="*{usuarioEmpleado.password}">
+										<input th:if="${employee.usuarioEmpleado.id != null}"
+											type="text" class="form-control" id="password"
+											placeholder="Password" th:field="*{usuarioEmpleado.password}">
 										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('usuarioEmpleado.username')}" th:errors="*{usuarioEmpleado.username}"></div>
+											th:if="${#fields.hasErrors('usuarioEmpleado.password')}"
+											th:errors="*{usuarioEmpleado.password}"></div>
 									</div>
-									
-									<div class="form-group">
-										<label for="state">Password</label>
-										<input type="password" class="form-control" id="employeepass"
-											placeholder="User Id" th:field="*{usuarioEmpleado.password}">
-										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('usuarioEmpleado.password')}" th:errors="*{usuarioEmpleado.password}"></div>
-									</div>
-									
-									
 									<div class="form-group m-0">
 										<button type="submit" class="btn confirm-button">Save</button>
-										<a th:href="@{/employees}" class="btn cancel-button" id="delRef">Cancel
-										</a>
+										<a th:href="@{/employees}" class="btn cancel-button"
+											id="delRef">Cancel </a>
 									</div>
-									
-									
-							
 								</form>
 							</div>
 						</div>

@@ -188,4 +188,10 @@ public class ProductController {
 		model.addAttribute("producto", productService.buscarProducto(id));
 		return "product-details";
 	}
+	
+	@GetMapping("/products/list")
+	public String getProductsListPage(Model model) throws Exception {
+		model.addAttribute("productos", productService.obtenerProductos());
+		return "product-list";
+	}
 }

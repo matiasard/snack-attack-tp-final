@@ -34,27 +34,31 @@
 					</div>
 				</div>
 				<!-- FIN Título de la página de inicio -->
-				<div class="row mx-2 mb-4 rounded bg-white shadow page-content__wrapper">
-				<a th:href="@{/product/new}" class="btn btn-success ml-3 mt-3" id="addRef">Add
-					Product <i class="fa fa-plus"></i>
-				</a>
-				<!-- BARRA DE BUSQUEDA 🔍 -->
-          <div class="col-7 col-md-5 ml-3 mt-3">
+				<div
+					class="row mx-2 mb-4 rounded bg-white shadow page-content__wrapper">
+					<a th:href="@{/product/new}" class="btn btn-success ml-3 mt-3"
+						id="addRef">Add Product <i class="fa fa-plus"></i>
+					</a>
+					<!-- BARRA DE BUSQUEDA 🔍 -->
+					<div class="col-7 col-md-5 ml-3 mt-3">
 						<form th:action="@{/products}" method="get" class="d-flex">
 							<input class="form-control" type="text" id="txtSearch"
-							name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search" required>
+								name="keyword" th:value="${keyword}" placeholder="Search"
+								aria-label="Search" required>
 							<button type="submit" class="btn btn-primary">
 								<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-								width="24" height="24"
-								viewBox="0 0 172 172"
-								style=" fill:#000000;">
-									<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" 
-										stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" 
-										stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" 
-										font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+									width="24" height="24" viewBox="0 0 172 172"
+									style="fill: #000000;">
+									<g fill="none" fill-rule="nonzero" stroke="none"
+										stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+										stroke-miterlimit="10" stroke-dasharray=""
+										stroke-dashoffset="0" font-family="none" font-weight="none"
+										font-size="none" text-anchor="none"
+										style="mix-blend-mode: normal">
 										<path d="M0,172v-172h172v172z" fill="none"></path>
 										<g fill="#ECF0F1">
-											<path d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,
+											<path
+										d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,
 											50.16667 50.16667,50.16667c12.52732,0 23.97256,-4.67249 32.7819,-12.31771l3.05143,
 											3.05143v9.26628l43,43l14.33333,-14.33333l-43,-43h-9.26628l-3.05143,
 											-3.05143c7.64521,-8.80934 12.31771,-20.25458 12.31771,-32.7819c0,-27.6214 -22.54527,-50.16667 -50.16667,
@@ -66,18 +70,21 @@
 									</g>
 								</svg>
 							</button>
-							<button type="button" value="clear" onclick="clearfilter()" class="btn btn-secondary">
+							<button type="button" value="clear" onclick="clearfilter()"
+								class="btn btn-secondary">
 								<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-									width="24" height="24"
-									viewBox="0 0 172 172"
-									style=" fill:#000000;">
-									<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" 
-										stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" 
-										font-family="none" font-weight="none" font-size="none" text-anchor="none" 
+									width="24" height="24" viewBox="0 0 172 172"
+									style="fill: #000000;">
+									<g fill="none" fill-rule="nonzero" stroke="none"
+										stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+										stroke-miterlimit="10" stroke-dasharray=""
+										stroke-dashoffset="0" font-family="none" font-weight="none"
+										font-size="none" text-anchor="none"
 										style="mix-blend-mode: normal">
 										<path d="M0,172v-172h172v172z" fill="none"></path>
 										<g fill="#ECF0F1">
-											<path d="M161.66346,0.41346c-1.49879,0.18089 -2.53245,0.80108 -3.10096,1.86058l-26.04808,48.78846l20.25962,
+											<path
+										d="M161.66346,0.41346c-1.49879,0.18089 -2.53245,0.80108 -3.10096,1.86058l-26.04808,48.78846l20.25962,
 												9.09615l18.8125,-51.88942c0.82692,-2.27404 -1.26622,-5.27163 -4.75481,-6.82212c-1.73137,-0.77524 -3.66947,
 												-1.21454 -5.16827,-1.03365zM9.92308,26.46154c-5.47837,0 -9.92308,4.44471 -9.92308,9.92308c0,5.47837 4.44471,
 												9.92308 9.92308,9.92308c5.47837,0 9.92308,-4.44471 9.92308,-9.92308c0,-5.47837 -4.44471,-9.92308 -9.92308,
@@ -103,108 +110,108 @@
 								</svg>
 							</button>
 						</form>
-          </div>
-          <!-- FIN BARRA DE BUSQUEDA 🔍 -->
-				<div class="col-12" style="overflow-x: auto;">
-				<table class="table table-hover content_table">
-					<thead>
-						<tr class="text-center">
-							<th style="width: 6%">Code</th>
-							<th style="width: 24%">Name</th>
-							<th>Product Line</th>
-							<th>Sales price</th>
-							<th style="width: 10%">Image</th>
-							<th>Stock</th>
-							<th>Vendor</th>
-							<th style="width: 9%">Edit</th>
-							<th style="width: 10%">Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="product : ${products}" class="text-center">
-							<td th:text="${product.id}"></td>
-							<td th:text="${product.name}"></td>
-							<td th:text="${product.productLine.productLine}"></td>
-							<td>$ <span
-								th:text="${#numbers.formatDecimal(product.MSRP, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
-							<td><img class="card-img-top m-auto"
-								th:src="*{'data:image/png;base64,'+product.image}"></td>
-							<td th:text="${product.quantityInStock}"></td>
-							<td th:text="${product.vendor}"></td>
-							<td><a th:href="@{/product/edit/{id}(id=${product.id})}"
-								class="btn btn-warning">Edit <i class="fa fa-edit"></i></a></td>
-							<td><a data-toggle="modal" data-target="#removeProductModal"
-								class="btn btn-danger delBtn"
-								th:attr="data-target='#removeProductModal'+${product.id}">Delete
-									<i class="fa fa-trash"></i>
-							</a>
-								<div class="modal fade"
-									th:id="removeProductModal+${product.id}"
-									id="removeProductoModal" tabindex="-1" role="dialog"
-									aria-labelledby="removeModalCenterTitle" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title" id="removeModalCenterTitle">Delete
-													Product</h4>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<p class="alert alert-danger">
-													Are you sure want to delete <span th:text="${product.name}"></span>?
-												</p>
-											</div>
-											<div class="modal-footer">
-												<a th:href="@{/product/delete/{id}(id=${product.id})}"
-													class="btn btn-danger" id="delRef">Delete</a>
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Cancel</button>
-											</div>
-										</div>
-									</div>
-								</div></td>
-						</tr>
-					</tbody>
-				</table>
-				<!-- Pagination -->
-				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
-						<nav aria-label="Pagination">
-							<ul class="pagination justify-content-center">
-								<li class="page-item"
-									th:classappend="${prev == 0 ? 'disabled': ''}"><a
-									class="page-link" th:href="@{|/products/?page=${prev}|}">Previous</a></li>
-								<li class="page-item" th:each="page : ${pages}"
-									th:classappend="${current == page ? 'active': ''}"><a
-									class="page-link" th:href="@{|/products/?page=${page}|}"
-									th:text="${page}"></a></li>
-								<li class="page-item"
-									th:classappend="${current == last ? 'disabled': ''}"><a
-									class="page-link" th:href="@{|/products/?page=${next}|}">Next</a></li>
-							</ul>
-						</nav>
 					</div>
-					<div class="col-md-2"></div>
+					<!-- FIN BARRA DE BUSQUEDA 🔍 -->
+					<div class="col-12" style="overflow-x: auto;">
+						<table class="table table-hover content_table">
+							<thead>
+								<tr class="text-center">
+									<th style="width: 6%">Code</th>
+									<th style="width: 24%">Name</th>
+									<th>Product Line</th>
+									<th>Sales price</th>
+									<th style="width: 10%">Image</th>
+									<th>Stock</th>
+									<th>Vendor</th>
+									<th style="width: 9%">Edit</th>
+									<th style="width: 10%">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="product : ${products}" class="text-center">
+									<td th:text="${product.id}"></td>
+									<td><a th:href="@{/products/details/{id}(id=${product.id})}" th:text="${product.name}"> </a></td>
+									<td th:text="${product.productLine.productLine}"></td>
+									<td>$ <span
+										th:text="${#numbers.formatDecimal(product.MSRP, 0, 'COMMA', 2, 'POINT')}">10.00</span></td>
+									<td><img class="card-img-top m-auto"
+										th:src="*{'data:image/png;base64,'+product.image}"></td>
+									<td th:text="${product.quantityInStock}"></td>
+									<td th:text="${product.vendor}"></td>
+									<td><a th:href="@{/product/edit/{id}(id=${product.id})}"
+										class="btn btn-warning">Edit <i class="fa fa-edit"></i></a></td>
+									<td><a data-toggle="modal"
+										data-target="#removeProductModal"
+										class="btn btn-danger delBtn"
+										th:attr="data-target='#removeProductModal'+${product.id}">Delete
+											<i class="fa fa-trash"></i>
+									</a>
+										<div class="modal fade"
+											th:id="removeProductModal+${product.id}"
+											id="removeProductoModal" tabindex="-1" role="dialog"
+											aria-labelledby="removeModalCenterTitle" aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered"
+												role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" id="removeModalCenterTitle">Delete
+															Product</h4>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<p class="alert alert-danger">
+															Are you sure want to delete <span
+																th:text="${product.name}"></span>?
+														</p>
+													</div>
+													<div class="modal-footer">
+														<a th:href="@{/product/delete/{id}(id=${product.id})}"
+															class="btn btn-danger" id="delRef">Delete</a>
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Cancel</button>
+													</div>
+												</div>
+											</div>
+										</div></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- Pagination -->
+						<div class="row">
+							<div class="col-md-2"></div>
+							<div class="col-md-8">
+								<nav aria-label="Pagination">
+									<ul class="pagination justify-content-center">
+										<li class="page-item"
+											th:classappend="${prev == 0 ? 'disabled': ''}"><a
+											class="page-link" th:href="@{|/products/?page=${prev}|}">Previous</a></li>
+										<li class="page-item" th:each="page : ${pages}"
+											th:classappend="${current == page ? 'active': ''}"><a
+											class="page-link" th:href="@{|/products/?page=${page}|}"
+											th:text="${page}"></a></li>
+										<li class="page-item"
+											th:classappend="${current == last ? 'disabled': ''}"><a
+											class="page-link" th:href="@{|/products/?page=${next}|}">Next</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		</div>
-		</div>
 	</div>
-	<div th:replace="layout/footer :: footer"></div>
-
 	<!--  Funcion para limpiar 🧹 la barra de Busqueda 🔍 -->
 	<script>
 		function clearfilter(){ 
 		window.location = '/products';
 		}
-	</script>	
+	</script>
 	<!-- Fin Funcion para limpiar 🧹 la barra de Busqueda 🔍 -->
-
 </body>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>

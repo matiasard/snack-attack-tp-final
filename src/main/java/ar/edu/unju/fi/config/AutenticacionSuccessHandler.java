@@ -31,16 +31,23 @@ public class AutenticacionSuccessHandler implements AuthenticationSuccessHandler
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		boolean empleado = false;
+		boolean vendedor = false;
+		boolean administrador = false;
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		for (GrantedAuthority grantedAuthority : authorities) {
 			if (grantedAuthority.getAuthority().equals(EnumRoles.ROL_VENDEDOR.getDescripcion())) {
-				empleado = true;
+				vendedor = true;
+				break;
+			}
+			if (grantedAuthority.getAuthority().equals(EnumRoles.ROL_ADMINISTRADOR.getDescripcion())) {
+				administrador = true;
 				break;
 			}
 		}
-		if (empleado) {
-			redirectStrategy.sendRedirect(request, response, "/");
+		if (vendedor) {
+			redirectStrategy.sendRedirect(request, response, "/products");
+		} else if (administrador) {
+			redirectStrategy.sendRedirect(request, response, "/products");
 		} else {
 			throw new IllegalStateException();
 		}

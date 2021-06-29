@@ -128,15 +128,7 @@
 									<!-- In this case the logged user
 									 -->
 									<input type="hidden" th:field="*{salesRepresentative}" />
-									<div class="form-group">
-										<label for="email">Email</label>
-										<input type="email" class="form-control" id="email"
-											placeholder="your@mail.com"
-											th:field="*{usuarioCliente.email}">
-										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('usuarioCliente.email')}"
-											th:errors="*{usuarioCliente.email}"></div>
-									</div>
+									
 									<!-- For create or edit client user -->
 									<div class="form-group">
 										<label for="username">Username</label>

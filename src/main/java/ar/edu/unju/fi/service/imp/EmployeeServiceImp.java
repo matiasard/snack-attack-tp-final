@@ -40,7 +40,6 @@ public class EmployeeServiceImp implements IEmployeeService {
 		empleado.getUsuarioEmpleado().setPassword(bCryptPasswordEncoder.encode(pw));
 		empleadoRepository.save(empleado);
 		LOGGER.info("RESULT: Se guardó el empleado " + empleado.getFirstName());
-
 	}
 
 	@Override

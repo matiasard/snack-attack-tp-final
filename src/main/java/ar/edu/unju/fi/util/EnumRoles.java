@@ -9,8 +9,8 @@ package ar.edu.unju.fi.util;
  */
 public enum EnumRoles {
 
-	ROL_CLIENTE("CLIENTE"),
-	ROL_VENDEDOR("VENDEDOR");
+	ROL_VENDEDOR("ROLE_USER"),
+	ROL_ADMINISTRADOR("ROLE_ADMIN");
 
 	private final String descripcion;
 
