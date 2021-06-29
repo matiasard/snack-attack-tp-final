@@ -23,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 /**
@@ -35,22 +36,25 @@ import org.springframework.stereotype.Component;
 public class Order {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Length(max = 11)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Length(max = 11)
 	@Column(name = "orderNumber", unique = true, nullable = false, updatable = false)
 	private Long number;
 
 	@NotNull(message="The Order Date must not be null")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@PastOrPresent(message="The Order Date must be a date  in the past or in the present. ")
 	@Column(nullable = false)
 	private LocalDate orderDate;
 
 	@NotNull(message="The Required Date must not be null")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Future(message="The Required Date must be a date or time in the future. ")
 	@Column(nullable = false)
 	private LocalDate requiredDate;
 
 	@Future(message="If you enter shipped date, it must be a future date .")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column
 	private LocalDate shippedDate;
 
