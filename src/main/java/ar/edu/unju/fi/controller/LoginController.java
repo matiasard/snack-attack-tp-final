@@ -9,9 +9,9 @@ import java.util.Base64;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+//import org.springframework.http.HttpHeaders;
+//import org.springframework.http.HttpStatus;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import ar.edu.unju.fi.entity.Customer;
-import ar.edu.unju.fi.entity.Usuario;
-import ar.edu.unju.fi.entity.UsuarioCliente;
 import ar.edu.unju.fi.entity.UsuarioEmpleado;
-import ar.edu.unju.fi.repository.UsuarioRepository;
+//import ar.edu.unju.fi.entity.Usuario;
+//import ar.edu.unju.fi.entity.UsuarioCliente;
+//import ar.edu.unju.fi.entity.UsuarioEmpleado;
+//import ar.edu.unju.fi.repository.UsuarioRepository;
 import ar.edu.unju.fi.service.ICustomerService;
-import ar.edu.unju.fi.service.imp.MailServiceImp;
 
 /**
  * @author Enzo Sandoval
@@ -41,16 +41,17 @@ public class LoginController {
 	private Customer customer;
 
 	@Autowired
+	private UsuarioEmpleado usuario;
+
+	@Autowired
 	private ICustomerService customerService;
 
-	@Autowired
-	private MailServiceImp mailServiceImp;
+//	@Autowired
+//	private UsuarioRepository usuarioRepository;
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
-
-	@GetMapping("/signin")
-	public String getSignInPage() {
+	@GetMapping("/login")
+	public String getSignInPage(Model model) {
+		model.addAttribute("usuario", usuario);
 		return "signin";
 	}
 
@@ -78,12 +79,6 @@ public class LoginController {
 			model.addAttribute("customer", customer);
 			return "signup";
 		} else {
-			String message = "Information: " + customer.getName() + "\nPhone:" + customer.getPhone() + "\nE-mail: "
-					+ customer.getUsuarioCliente().getEmail() + "\nAddress: " + customer.getAddressLine1() + ", "
-					+ customer.getCity() + ", " + customer.getCountry();
-			String subject = "Clasics Models Cars Credit Request";
-			mailServiceImp.sendMail(customer.getUsuarioCliente().getEmail(), "enzosandoval@hotmail.com", subject,
-					message);
 			customerService.guardar(customer);
 			return "redirect:/";
 		}
@@ -96,26 +91,26 @@ public class LoginController {
 		return "customer-edit";
 	}
 
-	@GetMapping("/usuario/login")
-	public ResponseEntity<String> getUser(@Valid @RequestParam("username") String username,
-			@RequestParam("password") String password) {
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Custom-Header", "usuario");
-		String id = "";
-		String tipoUsuario = "";
-		try {
-			Usuario usuario = usuarioRepository.findByUsernameAndPassword(username, password);
-			id = String.valueOf(usuario.getId());
-			// Get tipo de usuario
-			if (usuario instanceof UsuarioCliente)
-				tipoUsuario = "Cliente";
-			else if (usuario instanceof UsuarioEmpleado)
-				tipoUsuario = "Empleado";
-
-		} catch (Exception ex) {
-			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.CONFLICT);
-		}
-		return new ResponseEntity<>("Bienvenido " + username, HttpStatus.OK);
-	}
+//	@GetMapping("/usuario/login")
+//	public ResponseEntity<String> getUser(@Valid @RequestParam("username") String username,
+//			@RequestParam("password") String password) {
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.add("Custom-Header", "usuario");
+//		String id = "";
+//		String tipoUsuario = "";
+//		try {
+//			Usuario usuario = usuarioRepository.findByUsernameAndPassword(username, password);
+//			id = String.valueOf(usuario.getId());
+//			// Get tipo de usuario
+//			if (usuario instanceof UsuarioCliente)
+//				tipoUsuario = "Cliente";
+//			else if (usuario instanceof UsuarioEmpleado)
+//				tipoUsuario = "Empleado";
+//
+//		} catch (Exception ex) {
+//			return new ResponseEntity<>("Usuario no encontrado", HttpStatus.CONFLICT);
+//		}
+//		return new ResponseEntity<>("Bienvenido " + username, HttpStatus.OK);
+//	}
 
 }
