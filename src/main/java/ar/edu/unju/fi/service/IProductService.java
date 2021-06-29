@@ -26,4 +26,6 @@ public interface IProductService {
 
 	public void borrar(String id);
 
+	public List<Product> findByKeyword(String keyword);
+
 }

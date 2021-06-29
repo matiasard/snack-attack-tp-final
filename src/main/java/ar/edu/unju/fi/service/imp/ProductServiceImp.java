@@ -81,4 +81,12 @@ public class ProductServiceImp implements IProductService {
 		productRepository.deleteById(id);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Product> findByKeyword(String keyword) {
+		LOGGER.info("METHOD: findByKeyword()");
+		return productRepository.findByKeyword(keyword);
+	}
+
+	
 }
