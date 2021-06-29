@@ -45,13 +45,16 @@ public abstract class Usuario {
 	protected String username;
 
 	@NotBlank(message = "Password must not have blank spaces.")
-	@Length(min = 6, max = 16, message = "Password must be at least 6 characters.")
-	@Column(name = "password", nullable = false, length = 16)
+	@Length(min = 6, message = "Password must be at least 6 characters.")
+	@Column(name = "password", nullable = false)
 	protected String password;
 
 	@Lob
 	@Column(name = "image", columnDefinition = "LONGBLOB")
 	protected String image;
+
+	@Column
+	protected String rol;
 
 	public Usuario() {
 	}
@@ -112,9 +115,24 @@ public abstract class Usuario {
 		this.image = image;
 	}
 
+	/**
+	 * @return the rol
+	 */
+	public String getRol() {
+		return rol;
+	}
+
+	/**
+	 * @param rol the rol to set
+	 */
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username + ", password=" + password + ", image=" + image + "]";
+		return "Usuario [id=" + id + ", username=" + username + ", password=" + password + ", image=" + image + ", rol="
+				+ rol + "]";
 	}
 
 }

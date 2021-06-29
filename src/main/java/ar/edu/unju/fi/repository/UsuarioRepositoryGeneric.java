@@ -17,4 +17,6 @@ public interface UsuarioRepositoryGeneric<T extends Usuario> extends JpaReposito
 
 	T findByUsernameAndPassword(String username, String password);
 
+	T findByUsername(String username);
+
 }

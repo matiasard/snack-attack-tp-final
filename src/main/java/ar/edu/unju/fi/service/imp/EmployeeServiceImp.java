@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.entity.Employee;
@@ -23,20 +24,23 @@ import ar.edu.unju.fi.service.IEmployeeService;
  *
  */
 @Service
-public class EmployeeServiceImp implements IEmployeeService{
+public class EmployeeServiceImp implements IEmployeeService {
 
 	private static final Log LOGGER = LogFactory.getLog(EmployeeServiceImp.class);
 
 	@Autowired
 	private EmployeeRepository empleadoRepository;
-	
+
 	@Override
 	public void guardar(Employee empleado) {
 		LOGGER.info("SERVICE: EmployeeService");
 		LOGGER.info("METHOD: guardar()");
+		String pw = empleado.getUsuarioEmpleado().getPassword();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		empleado.getUsuarioEmpleado().setPassword(bCryptPasswordEncoder.encode(pw));
 		empleadoRepository.save(empleado);
 		LOGGER.info("RESULT: Se guardó el empleado " + empleado.getFirstName());
-		
+
 	}
 
 	@Override
@@ -45,7 +49,7 @@ public class EmployeeServiceImp implements IEmployeeService{
 		LOGGER.info("METHOD: obtenerEmpleados()");
 		List<Employee> empleados = new ArrayList<>();
 		empleadoRepository.findAll().forEach(empleados::add);
-		LOGGER.info("METHOD: Lista tamaño: " +  empleados.size());
+		LOGGER.info("METHOD: Lista tamaño: " + empleados.size());
 		return empleados;
 	}
 
@@ -56,7 +60,7 @@ public class EmployeeServiceImp implements IEmployeeService{
 		Optional<Employee> optional = empleadoRepository.findById(id);
 		Employee empleado = null;
 		if (optional.isPresent()) {
-			empleado= optional.get();
+			empleado = optional.get();
 			LOGGER.info("RESULT: Empleado: " + empleado.getFirstName());
 		} else {
 			throw new Exception("Empleado no encontrado");
