@@ -113,10 +113,10 @@
 										<label for="email">Email</label>
 										<input type="email" class="form-control" id="email"
 											placeholder="your@mail.com"
-											th:field="*{usuarioCliente.email}">
+											th:field="*{email}">
 										<div class="form-text text-danger"
-											th:if="${#fields.hasErrors('usuarioCliente.email')}"
-											th:errors="*{usuarioCliente.email}"></div>
+											th:if="${#fields.hasErrors('email')}"
+											th:errors="*{email}"></div>
 									</div>
 									<!-- For create or edit client user -->
 									<div class="form-group">
